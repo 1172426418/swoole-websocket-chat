@@ -139,6 +139,7 @@ function _getRandomString(len) {//生成随机名称
           })
           $("li[data-id='1']").remove();
           $(".user_list").append(str);
+          $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
           case 2://用户发送消息
           var s='<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">'+data.content+'</div><div class="name_time">'+data.user+' · x分钟前</div></div></div>';
