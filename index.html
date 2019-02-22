@@ -76,7 +76,6 @@
 <script type="text/javascript">
     var wsServer = 'ws://fates.free.idcfengye.com';
     var websocket = new WebSocket(wsServer);
-    
     websocket.onopen = function (evt) {
         //alert('正在连接聊天服务器..')
         alert('正在连接聊天服务器,请耐心等待..')
@@ -104,7 +103,7 @@
                 }));
       sessionStorage.setItem ('username', name);
     }
-
+    var username=sessionStorage.getItem ('username');
 
 function _getRandomString(len) {//生成随机名称
     len = len || 32;
@@ -117,7 +116,7 @@ function _getRandomString(len) {//生成随机名称
     return pwd;
 
 }
-    websocket.onmessage = function (evt) {
+    websocket.onmessage = function (evt){
    
         var data=JSON.parse(evt.data);
        
@@ -125,10 +124,13 @@ function _getRandomString(len) {//生成随机名称
           case 1://用户进入房间
           var s='<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">'+data.content+'</div><div class="name_time">系统消息 · x分钟前</div></div></div>';
           $(".message_box").append(s);
-          $(".username").html(data.user);
+          if($(".username").html()==''){
+            $(".username").html(data.user);
+          }
+          
         //  var arr = data.alluser.split(',');
           var str='';
-         console.log(data.alluser);
+        // console.log(data.alluser);
        // var csss=JSON.parse(data.alluser);
   
         　$.each(JSON.parse(data.alluser), function(key, val) {    
