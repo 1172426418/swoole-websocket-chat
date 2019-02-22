@@ -141,6 +141,7 @@ function _getRandomString(len) {//生成随机名称
           case 2://用户发送消息
           var s='<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">'+data.content+'</div><div class="name_time">'+data.user+' · x分钟前</div></div></div>';
           $(".message_box").append(s);    
+          $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
           case 3://用户离开房间
           $("li[data-username='"+data.user+"']").remove();
@@ -153,7 +154,7 @@ function _getRandomString(len) {//生成随机名称
     };
 
 $(document).ready(function(e) {
-	$('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
+	$('#message_box').scrollTop($("#message_box")[0].scrollHeight);
 	$('.uname').hover(
 	    function(){
 		    $('.managerbox').stop(true, true).slideDown(100);
@@ -195,6 +196,7 @@ $(document).ready(function(e) {
 		//按下ctrl+enter发送消息
 		if((event.ctrlKey && (k == 13 || k == 10) )){
 			sendMessage(event, fromname, to_uid, to_uname);
+ 
 		}
 	});
 });
