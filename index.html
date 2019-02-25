@@ -172,11 +172,18 @@
         return Y+M+D+h+m+s;
     }
     //timestampToTime(1403058804);
-    websocket.onmessage = function (evt) {
 
+ 
+   
+    websocket.onmessage = function (evt) {
+  
+   
       var data = JSON.parse(evt.data);
       var now =Date.parse(new Date());//获取收到消息时的时间
       var times;
+
+     
+     
       if(now-g_time>1000*20){//判断两个时间直接的间隔，假设两次消息间隔大于20秒则加上当前时间
         times=' · '+timestampToTime(now);
         g_time=now;
@@ -185,15 +192,19 @@
         g_time=now;
       }
 
-     console.log(data)
+     
 
+    //  console.log(data)
+  
       switch (data.type) {
         case 1: //用户进入房间
           $("#inhome").remove();
 
           var s =
-            '<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
-            data.content + '</div><div class="name_time">系统消息'+times+'</div></div></div>';
+            '<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right">'+
+              '<div class="name_time">系统消息'+times+'</div>'+
+              '<div class="msg">' +data.content + '</div>'+
+              '</div></div>';
           $(".message_box").append(s);
           if ($(".username").html() == '') {
             $(".username").html(data.user);
@@ -215,9 +226,12 @@
           $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
         case 2: //用户发送消息
+      
           var s =
-            '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
-            data.content + '</div><div class="name_time">' + data.user +times+'</div></div></div>';
+            '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right">'+
+              '<div class="name_time">' + data.user +times+'</div>'+
+              '<div class="msg">' +data.content + '</div>'+
+              '</div></div>';
           $(".message_box").append(s);
           $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
