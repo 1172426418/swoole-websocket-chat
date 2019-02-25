@@ -131,7 +131,6 @@
           $(".dialog-content").removeClass("animate-show").addClass("animate-hide");
           setTimeout(function(){
             $(".use-dialog").remove();
-           
           },100)
 
           websocket.send(JSON.stringify({
@@ -162,6 +161,8 @@
     websocket.onmessage = function (evt) {
 
       var data = JSON.parse(evt.data);
+
+     console.log(data)
 
       switch (data.type) {
         case 1: //用户进入房间
