@@ -80,6 +80,9 @@
   <script type="text/javascript">
     var wsServer = 'ws://139.159.228.216:80'; //http://fates.free.idcfengye.com
     var websocket = new WebSocket(wsServer);
+
+    var g_time=Date.parse(new Date());//定义全局时间为用户打开该客户端时间
+
     websocket.onopen = function (evt) {
 
 
@@ -158,18 +161,39 @@
       return pwd;
 
     }
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+    //timestampToTime(1403058804);
     websocket.onmessage = function (evt) {
 
       var data = JSON.parse(evt.data);
+      var now =Date.parse(new Date());//获取收到消息时的时间
+      var times;
+      if(now-g_time>1000*20){//判断两个时间直接的间隔，假设两次消息间隔大于20秒则加上当前时间
+        times=' · '+timestampToTime(now);
+        g_time=now;
+      }else{//否则不显示时间
+        times='';
+        g_time=now;
+      }
 
      console.log(data)
 
       switch (data.type) {
         case 1: //用户进入房间
           $("#inhome").remove();
+
           var s =
             '<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
-            data.content + '</div><div class="name_time">系统消息 · x分钟前</div></div></div>';
+            data.content + '</div><div class="name_time">系统消息'+times+'</div></div></div>';
           $(".message_box").append(s);
           if ($(".username").html() == '') {
             $(".username").html(data.user);
@@ -193,7 +217,7 @@
         case 2: //用户发送消息
           var s =
             '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
-            data.content + '</div><div class="name_time">' + data.user + ' · x分钟前</div></div></div>';
+            data.content + '</div><div class="name_time">' + data.user +times+'</div></div></div>';
           $(".message_box").append(s);
           $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
