@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="favicon.png">
 <link rel="icon" href="favicon.png" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="css/style.css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -52,13 +52,13 @@
         </div> -->
       </div>
       <div class="write_box">
-        <textarea id="message" name="message" class="write_area" placeholder="说点啥吧..."></textarea>
+        <textarea id="message" name="message" class="write_area"  autofocus="autofocus" placeholder="说点啥吧..."></textarea>
         <input type="hidden" name="fromname" id="fromname" value="河图" />
         <input type="hidden" name="to_uid" id="to_uid" value="0">
         <div class="facebox fn-clear">
           <!-- <div class="expression"></div>
           <div class="chat_type" id="chat_type">群聊</div> -->
-          <button name="" class="sub_but">提 交</button>
+          <button name="" class="sub_but">发送</button>
         </div>
       </div>
     </div>
@@ -73,10 +73,14 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
     var wsServer = 'ws://139.159.228.216:80';//http://fates.free.idcfengye.com
     var websocket = new WebSocket(wsServer);
     websocket.onopen = function (evt) {
+   
+  
+     // document.querySelector(".message_box").innerHTML = '正在连接聊天服务器,请耐心等待..'
         alert('正在连接聊天服务器,请耐心等待..')
       //  if(!sessionStorage.getItem('username')) {
         setname();
