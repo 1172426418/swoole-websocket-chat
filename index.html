@@ -1,33 +1,34 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>聊天室</title>
-<link rel="shortcut icon" href="favicon.png">
-<link rel="icon" href="favicon.png" type="image/x-icon">
-<link type="text/css" rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <title>聊天室</title>
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-<div class="chatbox">
-  <div class="chat_top fn-clear">
-    <div class="logo"><img src="images/logo.png" width="190" height="60"  alt=""/></div>
-    <div class="uinfo fn-clear">
-      <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>
-      <div class="uname">
-        <span class="username"></span><i class="fontico down"></i>
-        <ul class="managerbox">
-          <li><a href="#"><i class="fontico lock"></i>修改密码</a></li>
-          <li><a href="http://www.chat.com?message=321321"><i class="fontico logout"></i>退出登录</a></li>
-        </ul>
+  <div class="chatbox">
+    <div class="chat_top fn-clear">
+      <div class="logo"><img src="images/logo.png" width="190" height="60" alt="" /></div>
+      <div class="uinfo fn-clear">
+        <div class="uface"><img src="images/hetu.jpg" width="40" height="40" alt="" /></div>
+        <div class="uname">
+          <span class="username"></span><i class="fontico down"></i>
+          <ul class="managerbox">
+            <li><a href="#"><i class="fontico lock"></i>修改密码</a></li>
+            <li><a href="http://www.chat.com?message=321321"><i class="fontico logout"></i>退出登录</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="chat_message fn-clear">
-    <div class="chat_left">
-      <div class="message_box" id="message_box">
-<!--         <div class="msg_item fn-clear">
+    <div class="chat_message fn-clear">
+      <div class="chat_left">
+        <div class="message_box" id="message_box">
+          <!--         <div class="msg_item fn-clear">
           <div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div>
           <div class="item_right">
             <div class="msg">近日，TIOBE发布了2014年9月的编程语言排行榜，Java、C++跌至历史最低点，前三名则没有变化，依旧是C、Java、Objective-C。</div>
@@ -50,182 +51,235 @@
             <div class="name_time">河图 · 30秒前</div>
           </div>
         </div> -->
-      </div>
-      <div class="write_box">
-        <textarea id="message" name="message" class="write_area"  autofocus="autofocus" placeholder="说点啥吧..."></textarea>
-        <input type="hidden" name="fromname" id="fromname" value="河图" />
-        <input type="hidden" name="to_uid" id="to_uid" value="0">
-        <div class="facebox fn-clear">
-          <!-- <div class="expression"></div>
+        </div>
+        <div class="write_box">
+          <textarea id="message" name="message" class="write_area" autofocus="autofocus" placeholder="说点啥吧..."></textarea>
+          <input type="hidden" name="fromname" id="fromname" value="河图" />
+          <input type="hidden" name="to_uid" id="to_uid" value="0">
+          <div class="facebox fn-clear">
+            <!-- <div class="expression"></div>
           <div class="chat_type" id="chat_type">群聊</div> -->
-          <button name="" class="sub_but">发送</button>
+            <button name="" class="sub_but" title="按ctrl+enter换行">发送</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="chat_right">
-      <ul class="user_list" title="双击用户私聊">
-        <li class="fn-clear selected"><em>所有用户</em></li>
-<!--         <li class="fn-clear" data-id="1"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>河图</em><small class="online" title="在线"></small></li>
+      <div class="chat_right">
+        <ul class="user_list" title="双击用户私聊">
+          <li class="fn-clear selected"><em>所有用户</em></li>
+          <!--         <li class="fn-clear" data-id="1"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>河图</em><small class="online" title="在线"></small></li>
         <li class="fn-clear" data-id="2"><span><img src="images/53f44283a4347.jpg" width="30" height="30"  alt=""/></span><em>猫猫</em><small class="online" title="在线"></small></li>
         <li class="fn-clear" data-id="3"><span><img src="images/53f442834079a.jpg" width="30" height="30"  alt=""/></span><em>白猫</em><small class="offline" title="离线"></small></li> -->
 
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript">
-    var wsServer = 'ws://139.159.228.216:80';//http://fates.free.idcfengye.com
+
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var wsServer = 'ws://139.159.228.216:80'; //http://fates.free.idcfengye.com
     var websocket = new WebSocket(wsServer);
     websocket.onopen = function (evt) {
-   
-  
-     // document.querySelector(".message_box").innerHTML = '正在连接聊天服务器,请耐心等待..'
-        alert('正在连接聊天服务器,请耐心等待..')
-      //  if(!sessionStorage.getItem('username')) {
-        setname();
-             // }else {
-             //     alert('您已登陆');
 
-             // }
-        alert("正在进入聊天室，请稍后..");
+
+      // document.querySelector(".message_box").innerHTML = '正在连接聊天服务器,请耐心等待..'
+      // alert('正在连接聊天服务器,请耐心等待..');
+      $("#message_box").prepend("<p id='link'>正在连接聊天服务器,请耐心等待..</p>")
+      //  if(!sessionStorage.getItem('username')) {
+      setname();
+
+   
+      // }else {
+      //     alert('您已登陆');
+
+      // }
+      // alert("正在进入聊天室，请稍后..");
     };
 
     websocket.onclose = function (evt) {
-        alert("Disconnected");
+      alert("Disconnected");
     };
 
-    function setname(){
-      var name=prompt("请输入您的名字",_getRandomString(6));
-      if(name=='' || name==null){
-        name=_getRandomString(6);
-      }
-      websocket.send(JSON.stringify({
-                    'message': name,
-                    'type': 'setname'
-                }));
-      sessionStorage.setItem ('username', name);
+    //用户输入
+    var dialog_template = function(){
+      return '  <div class="use-dialog "><div class="dialog-content ">'+
+          '<h3 class="title">请输入您的名字</h3>'+
+          '<div><input type="text" id="use-name"></div>'+
+          '<div class="btn">确定</div></div></div>';
     }
-    var username=sessionStorage.getItem ('username');
 
-  function _getRandomString(len) {//生成随机名称
+    function setname() {
+        $("body").append(dialog_template);
+        setTimeout(function(){
+          $(".dialog-content").addClass("animate-show");
+        },0)
+
+      //var name = prompt("请输入您的名字", _getRandomString(6));
+      var $name =  $("#use-name");
+      var name =  $name.val();
+
+      if (name == '' || name == null) {
+        $name.val(_getRandomString(6));
+        //name = _getRandomString(6);
+      }
+
+      $("body").on("click",".dialog-content .btn",function(){
+          name = $name.val();
+
+          
+          $(".dialog-content").removeClass("animate-show").addClass("animate-hide");
+          setTimeout(function(){
+            $(".use-dialog").remove();
+           
+          },100)
+
+          websocket.send(JSON.stringify({
+            'message': name,
+            'type': 'setname'
+          }));
+          sessionStorage.setItem('username', name);
+          $("#link").remove();
+
+          $("#message_box").prepend("<p id='inhome'>正在进入聊天室，请稍后..</p>")
+      })
+
+
+    }
+    var username = sessionStorage.getItem('username');
+
+    function _getRandomString(len) { //生成随机名称
       len = len || 32;
       var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
       var maxPos = $chars.length;
       var pwd = '';
       for (i = 0; i < len; i++) {
-          pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
       }
       return pwd;
 
-  }
-    websocket.onmessage = function (evt){
-   
-        var data=JSON.parse(evt.data);
-       
-        switch(data.type){
-          case 1://用户进入房间
-          var s='<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">'+data.content+'</div><div class="name_time">系统消息 · x分钟前</div></div></div>';
+    }
+    websocket.onmessage = function (evt) {
+
+      var data = JSON.parse(evt.data);
+
+      switch (data.type) {
+        case 1: //用户进入房间
+          $("#inhome").remove();
+          var s =
+            '<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
+            data.content + '</div><div class="name_time">系统消息 · x分钟前</div></div></div>';
           $(".message_box").append(s);
-          if($(".username").html()==''){
+          if ($(".username").html() == '') {
             $(".username").html(data.user);
           }
-          
-        //  var arr = data.alluser.split(',');
-          var str='';
-        // console.log(data.alluser);
-       // var csss=JSON.parse(data.alluser);
-  
-        　$.each(JSON.parse(data.alluser), function(key, val) {    
-          str+='<li class="fn-clear" data-id="1" data-username="'+key+'"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>'+val+'</em><small class="online" title="在线"></small></li>';
+
+          //  var arr = data.alluser.split(',');
+          var str = '';
+          // console.log(data.alluser);
+          // var csss=JSON.parse(data.alluser);
+
+          $.each(JSON.parse(data.alluser), function (key, val) {
+            str += '<li class="fn-clear" data-id="1" data-username="' + key +
+              '"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>' + val +
+              '</em><small class="online" title="在线"></small></li>';
 
           })
           $("li[data-id='1']").remove();
           $(".user_list").append(str);
           $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
-          case 2://用户发送消息
-          var s='<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">'+data.content+'</div><div class="name_time">'+data.user+' · x分钟前</div></div></div>';
-          $(".message_box").append(s);    
+        case 2: //用户发送消息
+          var s =
+            '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right"><div class="msg">' +
+            data.content + '</div><div class="name_time">' + data.user + ' · x分钟前</div></div></div>';
+          $(".message_box").append(s);
           $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
           break;
-          case 3://用户离开房间
-          $("li[data-username='"+data.user+"']").remove();
+        case 3: //用户离开房间
+          $("li[data-username='" + data.user + "']").remove();
           break;
-        }
+      }
     };
 
     websocket.onerror = function (evt, e) {
-        alert('Error occured: ' + evt.data);
+      alert('Error occured: ' + evt.data);
     };
 
-$(document).ready(function(e) {
-	$('#message_box').scrollTop($("#message_box")[0].scrollHeight);
-	$('.uname').hover(
-	    function(){
-		    $('.managerbox').stop(true, true).slideDown(100);
-	    },
-		function(){
-		    $('.managerbox').stop(true, true).slideUp(100);
-		}
-	);
-	
-	var fromname = $('#fromname').val();
-	var to_uid   = 0; // 默认为0,表示发送给所有用户
-	var to_uname = '';
-	$('.user_list > li').dblclick(function(){
-		to_uname = $(this).find('em').text();
-		to_uid   = $(this).attr('data-id');
-		if(to_uname == fromname){
-		    alert('您不能和自己聊天!');
-			return false;
-		}
-		if(to_uname == '所有用户'){
-		    $("#toname").val('');
-			$('#chat_type').text('群聊');0
-		}else{
-		    $("#toname").val(to_uid);
-			$('#chat_type').text('您正和 ' + to_uname + ' 聊天');
-		}
-		$(this).addClass('selected').siblings().removeClass('selected');
-	    $('#message').focus().attr("placeholder", "您对"+to_uname+"说：");
-	});
-	
-	$('.sub_but').click(function(event){
-	    sendMessage(event, fromname, to_uid, to_uname);
-	});
-	
-	/*按下按钮或键盘按键*/
-	$("#message").keydown(function(event){
-		var e = window.event || event;
+    $(document).ready(function (e) {
+      $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
+      $('.uname').hover(
+        function () {
+          $('.managerbox').stop(true, true).slideDown(100);
+        },
+        function () {
+          $('.managerbox').stop(true, true).slideUp(100);
+        }
+      );
+
+      var fromname = $('#fromname').val();
+      var to_uid = 0; // 默认为0,表示发送给所有用户
+      var to_uname = '';
+      $('.user_list > li').dblclick(function () {
+        to_uname = $(this).find('em').text();
+        to_uid = $(this).attr('data-id');
+        if (to_uname == fromname) {
+          alert('您不能和自己聊天!');
+          return false;
+        }
+        if (to_uname == '所有用户') {
+          $("#toname").val('');
+          $('#chat_type').text('群聊');
+          0
+        } else {
+          $("#toname").val(to_uid);
+          $('#chat_type').text('您正和 ' + to_uname + ' 聊天');
+        }
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('#message').focus().attr("placeholder", "您对" + to_uname + "说：");
+      });
+
+      $('.sub_but').click(function (event) {
+        sendMessage(event, fromname, to_uid, to_uname);
+      });
+
+      /*按下按钮或键盘按键*/
+      $("#message").keydown(function (event) {
+        var e = window.event || event;
         var k = e.keyCode || e.which || e.charCode;
-		//按下ctrl+enter发送消息
-		if((event.ctrlKey && (k == 13 || k == 10) )){
-			sendMessage(event, fromname, to_uid, to_uname);
- 
-		}
-	});
-});
-function sendMessage(event, from_name, to_uid, to_uname){
-    var msg = $("#message").val();
-	if(to_uname != ''){
-	    msg = '您对 ' + to_uname + ' 说： ' + msg;
-	}
-	var htmlData =   '<div class="msg_item fn-clear">'
-                   + '   <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>'
-			       + '   <div class="item_right">'
-			       + '     <div class="msg own">' + msg + '</div>'
-			       + '     <div class="name_time">' + from_name + ' · 30秒前</div>'
-			       + '   </div>'
-			       + '</div>';
-	//$("#message_box").append(htmlData);
-  websocket.send(JSON.stringify({
-                    'message': msg,
-                    'type': 'usersaid'
-                }));
-	$('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
-	$("#message").val('');
-}
-</script>
+        //按下enter发送消息,ctrl+enter换行
+        if ((!event.ctrlKey && (k == 13 || k == 10))) {
+          sendMessage(event, fromname, to_uid, to_uname);
+
+        } else if (k == 13 || k == 10) {
+          var _val = $(this).val();
+          $(this).val(_val + "\n");
+        }
+
+      });
+    });
+
+    function sendMessage(event, from_name, to_uid, to_uname) {
+      var msg = $("#message").val();
+      if (to_uname != '') {
+        msg = '您对 ' + to_uname + ' 说： ' + msg;
+      }
+      var htmlData = '<div class="msg_item fn-clear">' +
+        '   <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>' +
+        '   <div class="item_right">' +
+        '     <div class="msg own">' + msg + '</div>' +
+        '     <div class="name_time">' + from_name + ' · 30秒前</div>' +
+        '   </div>' +
+        '</div>';
+      //$("#message_box").append(htmlData);
+      websocket.send(JSON.stringify({
+        'message': msg,
+        'type': 'usersaid'
+      }));
+      $('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
+      $("#message").val('');
+    }
+  </script>
 </body>
+
 </html>

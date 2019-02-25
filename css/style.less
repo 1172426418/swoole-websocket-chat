@@ -92,6 +92,9 @@ select,
 textarea {
     font-size: 100%;
 }
+input{
+    outline: none;
+}
 
 /* 去掉各Table  cell 的边距并让其边重合 */
 table {
@@ -357,7 +360,7 @@ i.logout:before {
 
 /*chat_left*/
 .chat_left {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     width: -moz-calc(~"100% - 240px");
     width: -webkit-calc(~"100% - 240px");
     width: calc(~"100% - 240px");
@@ -456,9 +459,11 @@ i.logout:before {
 }
 
 .facebox {
-    height: 32px;
+    // height: 32px;
     width: 100%;
     margin-top: 10px;
+    // background: #f4f4f3;
+
 }
 
 .sub_but {
@@ -467,7 +472,7 @@ i.logout:before {
     color: #333;
     background-color: #fff;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     height: 32px;
     cursor: pointer;
     line-height: 30px;
@@ -562,6 +567,63 @@ textarea {
     resize: none
 }
 
-body {
-    background: #f4f4f3;
+.use-dialog{
+    background-color: rgba(0,0,0,.1);
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    & *{
+        box-sizing: border-box;
+    }
+}
+.dialog-content{
+
+    // -ms-transform: translate(0,0%);
+    // -webkit-transform: translate(0,0%);
+    // transform: translate(0,0%);
+
+    transition: transform .3s ease-out;
+
+    background-color: #fff;
+    width: 300px;
+    margin: 30px auto;
+    padding: 15px;
+    padding-bottom: 5px;
+
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+
+    .title{
+        padding-bottom: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+    input{
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 100%;
+    }
+    .btn{
+        background-color: #2F97E1;
+        color:#fff;
+        padding:5px 8px;
+        width: 60px;
+        text-align: center;
+        margin: 10px auto;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+}
+.animate-hide{
+    -ms-transform: translate(0,-25%);
+    -webkit-transform: translate(0,-25%);
+    transform: translate(0,-25%);
+}
+.animate-show{
+    -ms-transform: translate(0,25%);
+    -webkit-transform: translate(0,25%);
+    transform: translate(0,25%);
 }
