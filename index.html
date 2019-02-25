@@ -56,8 +56,8 @@
         <input type="hidden" name="fromname" id="fromname" value="河图" />
         <input type="hidden" name="to_uid" id="to_uid" value="0">
         <div class="facebox fn-clear">
-          <div class="expression"></div>
-          <div class="chat_type" id="chat_type">群聊</div>
+          <!-- <div class="expression"></div>
+          <div class="chat_type" id="chat_type">群聊</div> -->
           <button name="" class="sub_but">提 交</button>
         </div>
       </div>
@@ -77,10 +77,9 @@
     var wsServer = 'ws://fates.free.idcfengye.com';
     var websocket = new WebSocket(wsServer);
     websocket.onopen = function (evt) {
-        //alert('正在连接聊天服务器..')
         alert('正在连接聊天服务器,请耐心等待..')
       //  if(!sessionStorage.getItem('username')) {
-                setname();
+        setname();
              // }else {
              //     alert('您已登陆');
 
@@ -105,17 +104,17 @@
     }
     var username=sessionStorage.getItem ('username');
 
-function _getRandomString(len) {//生成随机名称
-    len = len || 32;
-    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
-    var maxPos = $chars.length;
-    var pwd = '';
-    for (i = 0; i < len; i++) {
-        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-    }
-    return pwd;
+  function _getRandomString(len) {//生成随机名称
+      len = len || 32;
+      var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+      var maxPos = $chars.length;
+      var pwd = '';
+      for (i = 0; i < len; i++) {
+          pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+      }
+      return pwd;
 
-}
+  }
     websocket.onmessage = function (evt){
    
         var data=JSON.parse(evt.data);
