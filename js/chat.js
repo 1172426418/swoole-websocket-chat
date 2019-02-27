@@ -176,92 +176,92 @@
  websocket.onerror = function (evt, e) {
      alert('Error occured: ' + evt.data);
  };
-        function format(str){
-            var list = str.match(/\[[\u4e00-\u9fa5]*\w*\]/g);
-            var filter = /[\[\]]/g;
-            var title;
-            var _hash={微笑:'img/weixiao.gif',
-                嘻嘻:'img/xixi.gif',
-                哈哈:'img/haha.gif',
-                可爱:'img/keai.gif',
-                可怜:'img/kelian.gif',
-                挖鼻:'img/wabi.gif',
-                吃惊:'img/chijing.gif',
-                害羞:'img/haixiu.gif',
-                挤眼:'img/jiyan.gif',
-                闭嘴:'img/bizui.gif',
-                鄙视:'img/bishi.gif',
-                爱你:'img/aini.gif',
-                泪:'img/lei.gif',
-                偷笑:'img/touxiao.gif',
-                亲亲:'img/qinqin.gif',
-                生病:'img/shengbing.gif',
-                太开心:'img/taikaixin.gif',
-                白眼:'img/baiyan.gif',
-                右哼哼:'img/youhengheng.gif',
-                左哼哼:'img/zuohengheng.gif',
-                嘘:'img/xu.gif',
-                衰:'img/shuai.gif',
-                吐:'img/tu.gif',
-                哈欠:'img/haqian.gif',
-                抱抱:'img/baobao.gif',
-                怒:'img/nu.gif',
-                疑问:'img/yiwen.gif',
-                馋嘴:'img/chanzui.gif',
-                拜拜:'img/baibai.gif',
-                思考:'img/sikao.gif',
-                汗:'img/han.gif',
-                困:'img/kun.gif',
-                睡:'img/shui.gif',
-                钱:'img/qian.gif',
-                失望:'img/shiwang.gif',
-                酷:'img/ku.gif',
-                色:'img/se.gif',
-                哼:'img/heng.gif',
-                鼓掌:'img/guzhang.gif',
-                晕:'img/yun.gif',
-                悲伤:'img/beishang.gif',
-                抓狂:'img/zhuakuang.gif',
-                黑线:'img/heixian.gif',
-                阴险:'img/yinxian.gif',
-                怒骂:'img/numa.gif',
-                互粉:'img/hufen.gif',
-                书呆子:'img/shudaizi.gif',
-                愤怒:'img/fennu.gif',
-                感冒:'img/ganmao.gif',
-                心:'img/xin.gif',
-                伤心:'img/shangxin.gif',
-                猪:'img/zhu.gif',
-                熊猫:'img/xiongmao.gif',
-                兔子:'img/tuzi.gif',
-                OK:'img/ok.gif',
-                耶:'img/ye.gif',
-                GOOD:'img/good.gif',
-                NO:'img/no.gif',
-                赞:'img/zan.gif',
-                来:'img/lai.gif',
-                弱:'img/ruo.gif',
-                草泥马:'img/caonima.gif',
-                神马:'img/shenma.gif',
-                囧:'img/jiong.gif',
-                浮云:'img/fuyun.gif',
-                给力:'img/geili.gif',
-                围观:'img/weiguan.gif',
-                威武:'img/weiwu.gif',
-                话筒:'img/huatong.gif',
-                蜡烛:'img/lazhu.gif',
-                蛋糕:'img/dangao.gif',
-                发红包:'img/fahongbao.gif'}
-            if(list){
-                for(var i=0;i<list.length;i++){
-                    title = list[i].replace(filter,'');
-                    if(_hash[title]){
-                        str = str.replace(list[i],' <img src="'+_hash[title]+'"/> ');
-                    }
-                }                
+function format(str){
+    var list = str.match(/\[[\u4e00-\u9fa5]*\w*\]/g);
+    var filter = /[\[\]]/g;
+    var title;
+    var _hash={微笑:'img/weixiao.gif',
+        嘻嘻:'img/xixi.gif',
+        哈哈:'img/haha.gif',
+        可爱:'img/keai.gif',
+        可怜:'img/kelian.gif',
+        挖鼻:'img/wabi.gif',
+        吃惊:'img/chijing.gif',
+        害羞:'img/haixiu.gif',
+        挤眼:'img/jiyan.gif',
+        闭嘴:'img/bizui.gif',
+        鄙视:'img/bishi.gif',
+        爱你:'img/aini.gif',
+        泪:'img/lei.gif',
+        偷笑:'img/touxiao.gif',
+        亲亲:'img/qinqin.gif',
+        生病:'img/shengbing.gif',
+        太开心:'img/taikaixin.gif',
+        白眼:'img/baiyan.gif',
+        右哼哼:'img/youhengheng.gif',
+        左哼哼:'img/zuohengheng.gif',
+        嘘:'img/xu.gif',
+        衰:'img/shuai.gif',
+        吐:'img/tu.gif',
+        哈欠:'img/haqian.gif',
+        抱抱:'img/baobao.gif',
+        怒:'img/nu.gif',
+        疑问:'img/yiwen.gif',
+        馋嘴:'img/chanzui.gif',
+        拜拜:'img/baibai.gif',
+        思考:'img/sikao.gif',
+        汗:'img/han.gif',
+        困:'img/kun.gif',
+        睡:'img/shui.gif',
+        钱:'img/qian.gif',
+        失望:'img/shiwang.gif',
+        酷:'img/ku.gif',
+        色:'img/se.gif',
+        哼:'img/heng.gif',
+        鼓掌:'img/guzhang.gif',
+        晕:'img/yun.gif',
+        悲伤:'img/beishang.gif',
+        抓狂:'img/zhuakuang.gif',
+        黑线:'img/heixian.gif',
+        阴险:'img/yinxian.gif',
+        怒骂:'img/numa.gif',
+        互粉:'img/hufen.gif',
+        书呆子:'img/shudaizi.gif',
+        愤怒:'img/fennu.gif',
+        感冒:'img/ganmao.gif',
+        心:'img/xin.gif',
+        伤心:'img/shangxin.gif',
+        猪:'img/zhu.gif',
+        熊猫:'img/xiongmao.gif',
+        兔子:'img/tuzi.gif',
+        OK:'img/ok.gif',
+        耶:'img/ye.gif',
+        GOOD:'img/good.gif',
+        NO:'img/no.gif',
+        赞:'img/zan.gif',
+        来:'img/lai.gif',
+        弱:'img/ruo.gif',
+        草泥马:'img/caonima.gif',
+        神马:'img/shenma.gif',
+        囧:'img/jiong.gif',
+        浮云:'img/fuyun.gif',
+        给力:'img/geili.gif',
+        围观:'img/weiguan.gif',
+        威武:'img/weiwu.gif',
+        话筒:'img/huatong.gif',
+        蜡烛:'img/lazhu.gif',
+        蛋糕:'img/dangao.gif',
+        发红包:'img/fahongbao.gif'}
+    if(list){
+        for(var i=0;i<list.length;i++){
+            title = list[i].replace(filter,'');
+            if(_hash[title]){
+                str = str.replace(list[i],' <img src="'+_hash[title]+'"/> ');
             }
-            return str;
-        };
+        }                
+    }
+    return str;
+};
  $(document).ready(function (e) {
      $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
      $('.uname').hover(
