@@ -3,116 +3,16 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>聊天室</title>
+
   <link rel="shortcut icon" href="favicon.png">
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <link type="text/css" rel="stylesheet" href="css/style.css">
 
-
 </head>
-<style type="text/css">
-      .emoticons{
-        width: 525px;
-        margin-bottom:20px;
-      }
-      .emoticons .publisher{
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px dotted #dbdbdb;
-      }
-      .emoticons .publisher textarea{
-        width: 500px;
-        height: 140px;
-        padding: 5px 10px;
-        border: 1px solid #dbdbdb;
-        resize: none;
-      }
-      .emoticons .publisher .trigger{
-        font-size: 24px;
-        font-weight: bold;
-        color: #666;
-      }
-      .emoticons .publisher .trigger-active{
-        color: #eb7350;
-      }
-      .emoticons .result{
-        padding: 10px 15px;
-        border: 1px dotted #dbdbdb;
-        margin-top: 10px;
-        height: 150px;
-        line-height: 24px;
-      }
-      .emoticons .result img{
-        vertical-align: middle;
-      }
 
-      .widget-layer{
-        position: relative;
-        width: 410px;
-        margin-top: 8px;
-        background: #fff;
-        border: 1px solid #dbdbdb;
-        border-radius: 2px;
-      }
-      .widget-layer:before{
-        position: absolute;
-        top: -16px;
-        left: 2px;
-        display: block;
-        content: '';
-        width: 0;
-        height: 0;
-        border: 8px solid transparent;
-        border-bottom-color: #dbdbdb;
-      }
-      .widget-layer:after{
-        position: absolute;
-        top: -15px;
-        left: 2px;
-        display: block;
-        content: '';
-        width: 0;
-        height: 0;
-        border: 8px solid transparent;
-        border-bottom-color: #f0f0f0;
-      }
-      .widget-layer .widget-tool{
-        height: 28px;
-        background: #f0f0f0;
-      }
-      .widget-layer .widget-close{
-        float: right;
-        width: 28px;
-        height: 28px;
-        line-height: 28px;
-        text-align: center;
-        font-family: Arial;
-      }
-      .widget-layer ul{
-        width: 372px;
-        margin: 0 auto;
-        padding: 15px 5px 20px;
-        overflow: hidden;
-      }
-      .widget-layer li{
-        position: relative;
-        z-index: 8;
-        float: left;
-        width: 22px;
-        height: 22px;
-        padding: 4px;
-        margin-left: -1px;
-        margin-top: -1px;
-        border: 1px solid #e8e8e8;
-        cursor: pointer;
-      }
-      .widget-layer li:hover{
-        z-index: 9;
-        border-color: #eb7350;
-      }
-    </style>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.emoticons.js"></script>
 
 <body>
   <div class="chatbox">
@@ -156,27 +56,16 @@
           </div>
         </div> -->
         </div>
-        <div class="write_box">
+        <div class="write_box ">
           <div class="publisher">
-          <p><a class="trigger" href="javascript:;">☺</a></p>
-          <textarea id="message" name="message" class="write_area" autofocus="autofocus" placeholder="说点啥吧..."></textarea>
+            <div class="pub-btn"><a class="trigger" href="javascript:;">☺</a></div>
+            <textarea id="message" name="message" class="write_area" autofocus="autofocus" placeholder="说点啥吧..."></textarea>
           </div>
-          <script>
-        $.emoticons({
-          'activeCls':'trigger-active'
-        },function(api){
-          var $content = $('textarea[name="message"]');
-          var $result = $('#result');
-          $('#format').click(function(){
-            $result.html(api.format($content.val()));
-          });
-        });
-      </script>
+
           <input type="hidden" name="fromname" id="fromname" value="河图" />
           <input type="hidden" name="to_uid" id="to_uid" value="0">
           <div class="facebox fn-clear">
-            <!-- <div class="expression"></div>
-          <div class="chat_type" id="chat_type">群聊</div> -->
+
             <button name="" class="sub_but" title="按ctrl+enter换行">发送</button>
           </div>
         </div>
@@ -192,255 +81,12 @@
       </div>
     </div>
   </div>
-<div class="widget-layer" style="position: absolute; left: 471.5px; top: 249px; display: none;"><div class="widget-tool"><a class="widget-close" href="javascript:;" title="关闭">X</a></div><div class="widget-panel"><ul><li title="微笑"><img data-src="img/weixiao.gif" src="img/weixiao.gif"></li><li title="嘻嘻"><img data-src="img/xixi.gif" src="img/xixi.gif"></li><li title="哈哈"><img data-src="img/haha.gif" src="img/haha.gif"></li><li title="可爱"><img data-src="img/keai.gif" src="img/keai.gif"></li><li title="可怜"><img data-src="img/kelian.gif" src="img/kelian.gif"></li><li title="挖鼻"><img data-src="img/wabi.gif" src="img/wabi.gif"></li><li title="吃惊"><img data-src="img/chijing.gif" src="img/chijing.gif"></li><li title="害羞"><img data-src="img/haixiu.gif" src="img/haixiu.gif"></li><li title="挤眼"><img data-src="img/jiyan.gif" src="img/jiyan.gif"></li><li title="闭嘴"><img data-src="img/bizui.gif" src="img/bizui.gif"></li><li title="鄙视"><img data-src="img/bishi.gif" src="img/bishi.gif"></li><li title="爱你"><img data-src="img/aini.gif" src="img/aini.gif"></li><li title="泪"><img data-src="img/lei.gif" src="img/lei.gif"></li><li title="偷笑"><img data-src="img/touxiao.gif" src="img/touxiao.gif"></li><li title="亲亲"><img data-src="img/qinqin.gif" src="img/qinqin.gif"></li><li title="生病"><img data-src="img/shengbing.gif" src="img/shengbing.gif"></li><li title="太开心"><img data-src="img/taikaixin.gif" src="img/taikaixin.gif"></li><li title="白眼"><img data-src="img/baiyan.gif" src="img/baiyan.gif"></li><li title="右哼哼"><img data-src="img/youhengheng.gif" src="img/youhengheng.gif"></li><li title="左哼哼"><img data-src="img/zuohengheng.gif" src="img/zuohengheng.gif"></li><li title="嘘"><img data-src="img/xu.gif" src="img/xu.gif"></li><li title="衰"><img data-src="img/shuai.gif" src="img/shuai.gif"></li><li title="吐"><img data-src="img/tu.gif" src="img/tu.gif"></li><li title="哈欠"><img data-src="img/haqian.gif" src="img/haqian.gif"></li><li title="抱抱"><img data-src="img/baobao.gif" src="img/baobao.gif"></li><li title="怒"><img data-src="img/nu.gif" src="img/nu.gif"></li><li title="疑问"><img data-src="img/yiwen.gif" src="img/yiwen.gif"></li><li title="馋嘴"><img data-src="img/chanzui.gif" src="img/chanzui.gif"></li><li title="拜拜"><img data-src="img/baibai.gif" src="img/baibai.gif"></li><li title="思考"><img data-src="img/sikao.gif" src="img/sikao.gif"></li><li title="汗"><img data-src="img/han.gif" src="img/han.gif"></li><li title="困"><img data-src="img/kun.gif" src="img/kun.gif"></li><li title="睡"><img data-src="img/shui.gif" src="img/shui.gif"></li><li title="钱"><img data-src="img/qian.gif" src="img/qian.gif"></li><li title="失望"><img data-src="img/shiwang.gif" src="img/shiwang.gif"></li><li title="酷"><img data-src="img/ku.gif" src="img/ku.gif"></li><li title="色"><img data-src="img/se.gif" src="img/se.gif"></li><li title="哼"><img data-src="img/heng.gif" src="img/heng.gif"></li><li title="鼓掌"><img data-src="img/guzhang.gif" src="img/guzhang.gif"></li><li title="晕"><img data-src="img/yun.gif" src="img/yun.gif"></li><li title="悲伤"><img data-src="img/beishang.gif" src="img/beishang.gif"></li><li title="抓狂"><img data-src="img/zhuakuang.gif" src="img/zhuakuang.gif"></li><li title="黑线"><img data-src="img/heixian.gif" src="img/heixian.gif"></li><li title="阴险"><img data-src="img/yinxian.gif" src="img/yinxian.gif"></li><li title="怒骂"><img data-src="img/numa.gif" src="img/numa.gif"></li><li title="互粉"><img data-src="img/hufen.gif" src="img/hufen.gif"></li><li title="书呆子"><img data-src="img/shudaizi.gif" src="img/shudaizi.gif"></li><li title="愤怒"><img data-src="img/fennu.gif" src="img/fennu.gif"></li><li title="感冒"><img data-src="img/ganmao.gif" src="img/ganmao.gif"></li><li title="心"><img data-src="img/xin.gif" src="img/xin.gif"></li><li title="伤心"><img data-src="img/shangxin.gif" src="img/shangxin.gif"></li><li title="猪"><img data-src="img/zhu.gif" src="img/zhu.gif"></li><li title="熊猫"><img data-src="img/xiongmao.gif" src="img/xiongmao.gif"></li><li title="兔子"><img data-src="img/tuzi.gif" src="img/tuzi.gif"></li><li title="OK"><img data-src="img/ok.gif" src="img/ok.gif"></li><li title="耶"><img data-src="img/ye.gif" src="img/ye.gif"></li><li title="GOOD"><img data-src="img/good.gif" src="img/good.gif"></li><li title="NO"><img data-src="img/no.gif" src="img/no.gif"></li><li title="赞"><img data-src="img/zan.gif" src="img/zan.gif"></li><li title="来"><img data-src="img/lai.gif" src="img/lai.gif"></li><li title="弱"><img data-src="img/ruo.gif" src="img/ruo.gif"></li><li title="草泥马"><img data-src="img/caonima.gif" src="img/caonima.gif"></li><li title="神马"><img data-src="img/shenma.gif" src="img/shenma.gif"></li><li title="囧"><img data-src="img/jiong.gif" src="img/jiong.gif"></li><li title="浮云"><img data-src="img/fuyun.gif" src="img/fuyun.gif"></li><li title="给力"><img data-src="img/geili.gif" src="img/geili.gif"></li><li title="围观"><img data-src="img/weiguan.gif" src="img/weiguan.gif"></li><li title="威武"><img data-src="img/weiwu.gif" src="img/weiwu.gif"></li><li title="话筒"><img data-src="img/huatong.gif" src="img/huatong.gif"></li><li title="蜡烛"><img data-src="img/lazhu.gif" src="img/lazhu.gif"></li><li title="蛋糕"><img data-src="img/dangao.gif" src="img/dangao.gif"></li><li title="发红包"><img data-src="img/fahongbao.gif" src="img/fahongbao.gif"></li></ul></div></div>
-
- <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
-  <script type="text/javascript">
-    var wsServer = 'ws://139.159.228.216:80'; //http://fates.free.idcfengye.com
-    var websocket = new WebSocket(wsServer);
-
-    var g_time=Date.parse(new Date());//定义全局时间为用户打开该客户端时间
-
-    websocket.onopen = function (evt) {
-
-
-      // document.querySelector(".message_box").innerHTML = '正在连接聊天服务器,请耐心等待..'
-      // alert('正在连接聊天服务器,请耐心等待..');
-      $("#message_box").prepend("<p id='link'>正在连接聊天服务器,请耐心等待..</p>")
-      //  if(!sessionStorage.getItem('username')) {
-      setname();
-
-   
-      // }else {
-      //     alert('您已登陆');
-
-      // }
-      // alert("正在进入聊天室，请稍后..");
-    };
-
-    websocket.onclose = function (evt) {
-      alert("Disconnected");
-    };
-
-    //用户输入
-    var dialog_template = function(){
-      return '  <div class="use-dialog "><div class="dialog-content ">'+
-          '<h3 class="title">请输入您的名字</h3>'+
-          '<div><input type="text" id="use-name"></div>'+
-          '<div class="btn">确定</div></div></div>';
-    }
-
-    function setname() {
-        $("body").append(dialog_template);
-        setTimeout(function(){
-          $(".dialog-content").addClass("animate-show");
-        },0)
-
-      //var name = prompt("请输入您的名字", _getRandomString(6));
-      var $name =  $("#use-name");
-      var name =  $name.val();
-
-      if (name == '' || name == null) {
-        $name.val(_getRandomString(6));
-        //name = _getRandomString(6);
-      }
-
-      $("body").on("click",".dialog-content .btn",function(){
-          name = $name.val();
-
-          
-          $(".dialog-content").removeClass("animate-show").addClass("animate-hide");
-          setTimeout(function(){
-            $(".use-dialog").remove();
-          },100)
-
-          websocket.send(JSON.stringify({
-            'message': name,
-            'type': 'setname'
-          }));
-          sessionStorage.setItem('username', name);
-          $("#link").remove();
-
-          $("#message_box").prepend("<p id='inhome'>正在进入聊天室，请稍后..</p>")
-      })
-
-
-    }
-    var username = sessionStorage.getItem('username');
-
-    function _getRandomString(len) { //生成随机名称
-      len = len || 32;
-      var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
-      var maxPos = $chars.length;
-      var pwd = '';
-      for (i = 0; i < len; i++) {
-        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-      }
-      return pwd;
-
-    }
-    function timestampToTime(timestamp) {
-        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-        var Y = date.getFullYear() + '-';
-        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-        var D = date.getDate() + ' ';
-        var h = date.getHours() + ':';
-        var m = date.getMinutes() + ':';
-        var s = date.getSeconds();
-        return Y+M+D+h+m+s;
-    }
-    //timestampToTime(1403058804);
 
  
-   
-    websocket.onmessage = function (evt) {
-  
-   
-      var data = JSON.parse(evt.data);
-      var now =Date.parse(new Date());//获取收到消息时的时间
-      var times;
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.emoticons.js"></script>
+  <script src="js/chat.js"></script>
 
-     
-     
-      if(now-g_time>1000*20){//判断两个时间直接的间隔，假设两次消息间隔大于20秒则加上当前时间
-        times=' · '+timestampToTime(now);
-        g_time=now;
-      }else{//否则不显示时间
-        times='';
-        g_time=now;
-      }
-
-     
-
-    //  console.log(data)
-  
-      switch (data.type) {
-        case 1: //用户进入房间
-          $("#inhome").remove();
-
-          var s =
-            '<div class="msg_item fn-clear"><div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div><div class="item_right">'+
-              '<div class="name_time">系统消息'+times+'</div>'+
-              '<div class="msg">' +data.content + '</div>'+
-              '</div></div>';
-          $(".message_box").append(s);
-          if ($(".username").html() == '') {
-            $(".username").html(data.user);
-          }
-
-          //  var arr = data.alluser.split(',');
-          var str = '';
-          // console.log(data.alluser);
-          // var csss=JSON.parse(data.alluser);
-
-          $.each(JSON.parse(data.alluser), function (key, val) {
-            str += '<li class="fn-clear" data-id="1" data-username="' + key +
-              '"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>' + val +
-              '</em><small class="online" title="在线"></small></li>';
-
-          })
-          $("li[data-id='1']").remove();
-          $(".user_list").append(str);
-          $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
-          break;
-        case 2: //用户发送消息
-                $.emoticons({
-        },function(api){
-          data.content=api.format(data.content);
-        });
-      
-          var s =
-            '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right">'+
-              '<div class="name_time">' + data.user +times+'</div>'+
-              '<div class="msg">' +data.content + '</div>'+
-              '</div></div>';
-          $(".message_box").append(s);
-          $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
-          break;
-        case 3: //用户离开房间
-          $("li[data-username='" + data.user + "']").remove();
-          break;
-      }
-    };
-
-    websocket.onerror = function (evt, e) {
-      alert('Error occured: ' + evt.data);
-    };
-
-    $(document).ready(function (e) {
-      $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
-      $('.uname').hover(
-        function () {
-          $('.managerbox').stop(true, true).slideDown(100);
-        },
-        function () {
-          $('.managerbox').stop(true, true).slideUp(100);
-        }
-      );
-
-      var fromname = $('#fromname').val();
-      var to_uid = 0; // 默认为0,表示发送给所有用户
-      var to_uname = '';
-      $('.user_list > li').dblclick(function () {
-        to_uname = $(this).find('em').text();
-        to_uid = $(this).attr('data-id');
-        if (to_uname == fromname) {
-          alert('您不能和自己聊天!');
-          return false;
-        }
-        if (to_uname == '所有用户') {
-          $("#toname").val('');
-          $('#chat_type').text('群聊');
-          0
-        } else {
-          $("#toname").val(to_uid);
-          $('#chat_type').text('您正和 ' + to_uname + ' 聊天');
-        }
-        $(this).addClass('selected').siblings().removeClass('selected');
-        $('#message').focus().attr("placeholder", "您对" + to_uname + "说：");
-      });
-
-      $('.sub_but').click(function (event) {
-        sendMessage(event, fromname, to_uid, to_uname);
-      });
-
-      /*按下按钮或键盘按键*/
-      $("#message").keydown(function (event) {
-        var e = window.event || event;
-        var k = e.keyCode || e.which || e.charCode;
-        //按下enter发送消息,ctrl+enter换行
-        if ((!event.ctrlKey && (k == 13 || k == 10))) {
-          sendMessage(event, fromname, to_uid, to_uname);
-
-        } else if (k == 13 || k == 10) {
-          var _val = $(this).val();
-          $(this).val(_val + "\n");
-        }
-
-      });
-    });
-
-    function sendMessage(event, from_name, to_uid, to_uname) {
-      var msg = $("#message").val();
-      if (to_uname != '') {
-        msg = '您对 ' + to_uname + ' 说： ' + msg;
-      }
-      var htmlData = '<div class="msg_item fn-clear">' +
-        '   <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>' +
-        '   <div class="item_right">' +
-        '     <div class="msg own">' + msg + '</div>' +
-        '     <div class="name_time">' + from_name + ' · 30秒前</div>' +
-        '   </div>' +
-        '</div>';
-      //$("#message_box").append(htmlData);
-      websocket.send(JSON.stringify({
-        'message': msg,
-        'type': 'usersaid'
-      }));
-      $('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
-      $("#message").val('');
-    }
-  </script>
 </body>
 
 </html>
