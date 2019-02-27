@@ -214,7 +214,11 @@
      });
 
      $('.sub_but').click(function (event) {
-         sendMessage(event, fromname, to_uid, to_uname);
+         var msg = $("#message").val();
+      
+         if(msg){
+             sendMessage(event, fromname, to_uid, to_uname);
+         }
      });
 
      /*按下按钮或键盘按键*/
