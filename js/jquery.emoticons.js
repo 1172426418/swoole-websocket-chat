@@ -140,6 +140,7 @@
             _hash[item.title] = options.path+item.url;
             $list.append('<li title="'+item.title+'"><img data-src="'+_hash[item.title]+'"/></li>');
         });
+        console.log(_hash);
         //接口处理
         _api.getTextarea = function(){
             return $textarea;
