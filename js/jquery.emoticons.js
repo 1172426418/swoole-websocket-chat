@@ -116,7 +116,9 @@
             'left':0,
             'onShow':function(){},
             'onHide':function(){},
-            'onSelect':function(){}
+            'onSelect':function(){
+                closeLayer();
+            }
         };
         var options = $.extend({}, defaults, parameter);
 
@@ -140,7 +142,6 @@
             _hash[item.title] = options.path+item.url;
             $list.append('<li title="'+item.title+'"><img data-src="'+_hash[item.title]+'"/></li>');
         });
-        console.log(_hash);
         //接口处理
         _api.getTextarea = function(){
             return $textarea;
