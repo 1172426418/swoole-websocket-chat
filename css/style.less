@@ -320,6 +320,7 @@ i.logout:before {
 .msg_item {
     margin-bottom: 20px;
     position: relative;
+
     .uface {
         position: absolute;
         top: 0px;
@@ -330,6 +331,7 @@ i.logout:before {
         margin-right: 15px;
     }
     .msg {
+        float: left;
         background-color: #fff;
         padding: 5px 10px ;
         // line-height: 24px;
@@ -342,6 +344,14 @@ i.logout:before {
         border:1px solid rgba(170, 170, 170,.5);
         border-radius: 10px;
         border-top-left-radius: 0;
+        &:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
         &:before {
             // content: "";
             // position: absolute;
