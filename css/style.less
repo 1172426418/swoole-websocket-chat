@@ -5,14 +5,14 @@
  */
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
 html {
-  
+
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
- 
+
 }
 
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -40,7 +40,8 @@ input,
 select,
 textarea {
     font-size: 100%;
-    outline: none;;
+    outline: none;
+    ;
 }
 
 /* 去掉各Table  cell 的边距并让其边重合 */
@@ -112,6 +113,7 @@ a {
     clear: both;
     height: 0;
 }
+
 /* 隐藏, 通常用来与 JS 配合 */
 .fn-hide {
     display: none;
@@ -170,11 +172,11 @@ textarea {
 
 @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.eot?68245288');
-    src: url('../font/fontello.eot?68245288#iefix') format('embedded-opentype'),
-        url('../font/fontello.woff?68245288') format('woff'),
-        url('../font/fontello.ttf?68245288') format('truetype'),
-        url('../font/fontello.svg?68245288#fontello') format('svg');
+    src: url('../font/f1/fontello.eot?68245288');
+    src: url('../font/f1/fontello.eot?68245288#iefix') format('embedded-opentype'),
+        url('../font/f1/fontello.woff?68245288') format('woff'),
+        url('../font/f1/fontello.ttf?68245288') format('truetype'),
+        url('../font/f1/fontello.svg?68245288#fontello') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -243,6 +245,7 @@ i.logout:before {
 .uface {
     float: left;
     height: 40px;
+
     img {
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
@@ -258,6 +261,7 @@ i.logout:before {
         color: #2E4059;
         position: relative;
     }
+
     i.down {
         margin-left: 50px;
     }
@@ -274,16 +278,20 @@ i.logout:before {
     position: absolute;
     top: 40px;
     right: -10px;
+    z-index:10;
+
     a {
         display: block;
         color: #2E4059;
         padding: 0px 10px;
+
         &:hover {
             background-color: #f9f9f9;
             text-decoration: none;
         }
-        
+
     }
+
     i {
         margin-right: 10px;
     }
@@ -298,7 +306,7 @@ i.logout:before {
 
 /*chat_left*/
 .chat_left {
-    padding:20px;
+    padding: 20px;
     padding-bottom: 0;
     width: calc(~"100% - 200px");
     height: calc(~"100% - 40px");
@@ -316,6 +324,7 @@ i.logout:before {
     border-bottom: 1px solid #eee;
     overflow: auto;
 }
+
 // chat-msg
 .msg_item {
     margin-bottom: 20px;
@@ -325,25 +334,28 @@ i.logout:before {
         position: absolute;
         top: 0px;
     }
+
     .item_right {
         margin-left: 45px;
         float: left;
         margin-right: 15px;
     }
+
     .msg {
         float: left;
         background-color: #fff;
-        padding: 5px 10px ;
+        padding: 5px 10px;
         // line-height: 24px;
-        white-space:pre-wrap;
-        word-break:break-all;
+        white-space: pre-wrap;
+        word-break: break-all;
         border-radius: 10px;
         color: #2E4059;
         position: relative;
         margin-bottom: 5px;
-        border:1px solid rgba(170, 170, 170,.5);
+        border: 1px solid rgba(170, 170, 170, .5);
         border-radius: 10px;
         border-top-left-radius: 0;
+
         &:after {
             visibility: hidden;
             display: block;
@@ -352,6 +364,7 @@ i.logout:before {
             clear: both;
             height: 0;
         }
+
         &:before {
             // content: "";
             // position: absolute;
@@ -366,10 +379,12 @@ i.logout:before {
             // z-index:1;
         }
     }
-    .msgs{
+
+    .msgs {
         text-align: center;
         width: 100%;
-        &>span{
+
+        &>span {
             display: inline-block;
             background-color: #dadada;
             color: #555;
@@ -385,7 +400,7 @@ i.logout:before {
         // line-height: 30px;
         padding-bottom: 5px;
     }
- 
+
 }
 
 
@@ -458,14 +473,18 @@ i.logout:before {
     padding: 0;
     overflow: auto;
     height: 100%;
+
     li {
-        padding: 10px 20px;
+        padding: 10px 15px;
         color: #2E4059;
         cursor: pointer;
-        &:hover,&.selected {
+        position: relative;
+        &:hover,
+        &.selected {
             background-color: #F4F6F8;
         }
     }
+
     span {
         display: block;
         float: left;
@@ -473,12 +492,14 @@ i.logout:before {
         height: 30px;
         margin-right: 10px;
     }
+
     em {
         display: block;
         float: left;
         height: 30px;
         line-height: 30px;
     }
+
     small {
         width: 10px;
         height: 10px;
@@ -488,6 +509,7 @@ i.logout:before {
         -webkit-border-radius: 50%;
         border-radius: 50%;
     }
+
     img {
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
@@ -496,14 +518,15 @@ i.logout:before {
     }
 }
 
-small{
+small {
     .online {
         background-color: #57B869;
     }
+
     .offline {
         background-color: #EB3E3E;
     }
-    
+
 }
 
 
@@ -521,9 +544,10 @@ small{
 }
 
 //表情按钮
-.pub-btn{
+.pub-btn {
     line-height: 25px;
 }
+
 .trigger {
     font-size: 24px;
     font-weight: bold;
@@ -614,6 +638,7 @@ small{
         margin: 4px;
         border: 1px solid #e8e8e8;
         cursor: pointer;
+
         &:hover {
             border-color: #eb7350;
         }
@@ -630,7 +655,7 @@ small{
     left: 0;
     bottom: 0;
     right: 0;
-
+    z-index:999;
     & * {
         box-sizing: border-box;
     }
@@ -681,4 +706,38 @@ small{
     -ms-transform: translate(0, 25%);
     -webkit-transform: translate(0, 25%);
     transform: translate(0, 25%);
+}
+
+
+//关闭按钮字体引用
+@font-face {
+    font-family: "iconfont";
+    // src: url('iconfont.eot?t=1551430762070'); /* IE9 */
+
+    src: url('../font/f2/iconfont.ttf?t=1551430762070') format('truetype');
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    // url('iconfont.eot?t=1551430762070#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    // url('iconfont.woff?t=1551430762070') format('woff'),
+    // url('iconfont.svg?t=1551430762070#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+}
+
+.icon-guanbi{
+    position: absolute;
+    right: 15px;
+    top:10px;
+    &:before {
+        content: "\e7b7";
+    }
+    &:hover{
+        color:#ff0000;
+    }
 }

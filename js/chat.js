@@ -59,6 +59,11 @@
          //name = _getRandomString(6);
      }
 
+     $("body").on("click",".use-dialog",function(event){
+        event.stopPropagation()
+     })
+
+
      $("body").on("click", ".dialog-content .btn", function () {
          name = $name.val();
 
@@ -149,10 +154,12 @@
              // var csss=JSON.parse(data.alluser);
 
              $.each(JSON.parse(data.alluser), function (key, val) {
-                 str += '<li class="fn-clear" data-id="1" data-username="' + key +
-                     '"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>' + val +
-                     '</em><small class="online" title="在线"></small></li>';
-
+                 str += '<li class="fn-clear" data-id="1" data-username="' + key +'">'
+                        +'<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>'
+                        +'<em title="双击用户名私聊" data-type="usertouser">' + val +'</em>'
+                        +'<small class="online" title="在线"></small>'
+                        +'<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>'
+                        +'</li>';
              })
              $("li[data-id='1']").remove();
              $(".user_list").append(str);
@@ -277,7 +284,13 @@ function format(str){
      var fromname = $('#fromname').val();
      var to_uid = 0; // 默认为0,表示发送给所有用户
      var to_uname = '';
-     $('.user_list > li').dblclick(function () {
+     $('.user_list ').on("dblclick","li>em",function () {
+
+        var state = $(this).data("type");
+        $("#use-state").val(state);
+
+
+        /*
          to_uname = $(this).find('em').text();
          to_uid = $(this).attr('data-id');
          if (to_uname == fromname) {
@@ -294,6 +307,12 @@ function format(str){
          }
          $(this).addClass('selected').siblings().removeClass('selected');
          $('#message').focus().attr("placeholder", "您对" + to_uname + "说：");
+         */
+     });
+
+     //关闭按钮
+     $('.user_list ').on("click","i",function () {
+        alert()
      });
 
      $('.sub_but').click(function (event) {
