@@ -126,8 +126,8 @@
         var $document = $(document);
         var $body = $('body');
         var $layer = $('<div class="'+options.prefix+'-layer">').appendTo($body);
-        var $tool = $('<div class="'+options.prefix+'-tool"></div>').appendTo($layer);
-        var $close = $('<a class="'+options.prefix+'-close" href="javascript:;" title="关闭">X</a>').appendTo($tool);
+       // var $tool = $('<div class="'+options.prefix+'-tool"></div>').appendTo($layer);
+       // var $close = $('<a class="'+options.prefix+'-close" href="javascript:;" title="关闭">X</a>').appendTo($tool);
         var $panel = $('<div class="'+options.prefix+'-panel"></div>').appendTo($layer);
         var $list = $('<ul></ul>').appendTo($panel);
         var $trigger = null;
@@ -184,7 +184,7 @@
             });
             $layer.css({
                 left: offset.left+options.left,
-                top: offset.top+height+options.top
+                top: offset.top+height+options.top-265
             }).show();
             options.onShow();
         });

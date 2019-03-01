@@ -74,6 +74,7 @@
          }));
          sessionStorage.setItem('username', name);
          $("#link").remove();
+         $("#message")[0].focus();
 
          $("#message_box").prepend("<p id='inhome'>正在进入聊天室，请稍后..</p>")
      })
@@ -296,10 +297,16 @@ function format(str){
      });
 
      $('.sub_but').click(function (event) {
-         var msg = $("#message").val();
-      
-         if(msg){
+         var $msg = $("#message");
+         var msg = $msg.val();
+         if($.trim(msg) != ""){
              sendMessage(event, fromname, to_uid, to_uname);
+             $msg[0].focus();
+             $msg.attr("placeholder","说点啥吧...");
+         }else {
+            $msg.val("");
+            $msg[0].focus();
+            $msg.attr("placeholder","不能发送空白消息!");
          }
      });
 
@@ -307,20 +314,30 @@ function format(str){
      $("#message").keydown(function (event) {
          var e = window.event || event;
          var k = e.keyCode || e.which || e.charCode;
-         //按下enter发送消息,ctrl+enter换行
-         if ((!event.ctrlKey && (k == 13 || k == 10))) {
-             sendMessage(event, fromname, to_uid, to_uname);
 
-         } else if (k == 13 || k == 10) {
-             var _val = $(this).val();
-             $(this).val(_val + "\n");
-         }
-
+        //按下enter发送消息,ctrl+enter换行
+        if ((!event.ctrlKey && (k == 13 || k == 10))) {
+            event.preventDefault();
+            var msg = $(this).val();
+            if($.trim(msg) != ""){
+                sendMessage(event, fromname, to_uid, to_uname);
+                $(this).attr("placeholder","说点啥吧...");
+            }else {
+                $(this).val("");
+                $(this).attr("placeholder","不能发送空白消息!");
+            }
+        } else if (k == 13 || k == 10) {
+            var _val = $(this).val();
+            $(this).val(_val + "\n");
+  
+        }
+       
      });
  });
 
  function sendMessage(event, from_name, to_uid, to_uname) {
      var msg = $("#message").val();
+         msg = $.trim(msg);
      if (to_uname != '') {
          msg = '您对 ' + to_uname + ' 说： ' + msg;
      }
