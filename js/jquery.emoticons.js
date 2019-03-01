@@ -165,6 +165,8 @@
             if($trigger){
                 $trigger.removeClass(options.activeCls);
             }
+            //外加，处理焦点
+            $("#message")[0].focus();
             $layer.hide();
             $trigger = null;
             $textarea = null;
@@ -192,6 +194,7 @@
             var $target = $(e.target);
             if(!$target.is('.'+options.triggerCls)&&!$target.closest('.'+options.prefix+'-layer').length){
                 closeLayer();
+              
             }
         });
         $layer.on('click','.'+options.prefix+'-close',closeLayer);
