@@ -144,9 +144,7 @@
                  '<div  class="msgs"><span >' + data.content + '</span></div>' +
                  '</div></div>';
              $(".message_box").append(s);
-             if ($(".username").html() == '') {
-                 $(".username").html(data.user);
-             }
+             
 
              //  var arr = data.alluser.split(',');
              var str = '';
@@ -178,6 +176,11 @@
          case 3: //用户离开房间
              $("li[data-username='" + data.user + "']").remove();
              break;
+         case 4:
+            $(".username").html(data.username);//此时还包括用户独立的userid 可放入全局变量中用于判断和是否是和自己聊天
+            //console.log(data);
+             break;
+
      }
  };
 
