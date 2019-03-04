@@ -59,8 +59,8 @@
          //name = _getRandomString(6);
      }
 
-     $("body").on("click",".use-dialog",function(event){
-        event.stopPropagation()
+     $("body").on("click", ".use-dialog", function (event) {
+         event.stopPropagation()
      })
 
 
@@ -113,7 +113,7 @@
  //timestampToTime(1403058804);
 
  //聊天框标示
- var mark_chat = null;
+ //  var mark_chat = null;
  websocket.onmessage = function (evt) {
 
 
@@ -144,7 +144,7 @@
                  '<div  class="msgs"><span >' + data.content + '</span></div>' +
                  '</div></div>';
              $(".message_box").append(s);
-             
+
 
              //  var arr = data.alluser.split(',');
              var str = '';
@@ -152,19 +152,19 @@
              // var csss=JSON.parse(data.alluser);
 
              $.each(JSON.parse(data.alluser), function (key, val) {
-                 str += '<li class="fn-clear" data-id="1" data-username="' + key +'">'
-                        +'<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>'
-                        +'<em title="双击用户名私聊" data-type="usertouser">' + val +'</em>'
-                        +'<small class="online" title="在线"></small>'
-                        +'<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>'
-                        +'</li>';
+                 str += '<li class="fn-clear" data-id="1" data-username="' + key + '">' +
+                     '<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>' +
+                     '<em title="双击用户名私聊" data-type="usertouser">' + val + '</em>' +
+                     '<small class="online" title="在线"></small>' +
+                     '<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>' +
+                     '</li>';
              })
              $("li[data-id='1']").remove();
              $(".user_list").append(str);
              $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
              break;
          case 2: //用户发送消息
-            data.content =format(data.content);
+             data.content = format(data.content);
              var s =
                  '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right">' +
                  '<div class="name_time">' + data.user + times + '</div>' +
@@ -177,8 +177,8 @@
              $("li[data-username='" + data.user + "']").remove();
              break;
          case 4:
-            $(".username").html(data.username);//此时还包括用户独立的userid 可放入全局变量中用于判断和是否是和自己聊天
-            //console.log(data);
+             $(".username").html(data.username); //此时还包括用户独立的userid 可放入全局变量中用于判断和是否是和自己聊天
+             //console.log(data);
              break;
 
      }
@@ -187,94 +187,96 @@
  websocket.onerror = function (evt, e) {
      alert('Error occured: ' + evt.data);
  };
-function format(str){
-    var list = str.match(/\[[\u4e00-\u9fa5]*\w*\]/g);
-    var filter = /[\[\]]/g;
-    var title;
-    var _hash={微笑:'img/weixiao.gif',
-        嘻嘻:'img/xixi.gif',
-        哈哈:'img/haha.gif',
-        可爱:'img/keai.gif',
-        可怜:'img/kelian.gif',
-        挖鼻:'img/wabi.gif',
-        吃惊:'img/chijing.gif',
-        害羞:'img/haixiu.gif',
-        挤眼:'img/jiyan.gif',
-        闭嘴:'img/bizui.gif',
-        鄙视:'img/bishi.gif',
-        爱你:'img/aini.gif',
-        泪:'img/lei.gif',
-        偷笑:'img/touxiao.gif',
-        亲亲:'img/qinqin.gif',
-        生病:'img/shengbing.gif',
-        太开心:'img/taikaixin.gif',
-        白眼:'img/baiyan.gif',
-        右哼哼:'img/youhengheng.gif',
-        左哼哼:'img/zuohengheng.gif',
-        嘘:'img/xu.gif',
-        衰:'img/shuai.gif',
-        吐:'img/tu.gif',
-        哈欠:'img/haqian.gif',
-        抱抱:'img/baobao.gif',
-        怒:'img/nu.gif',
-        疑问:'img/yiwen.gif',
-        馋嘴:'img/chanzui.gif',
-        拜拜:'img/baibai.gif',
-        思考:'img/sikao.gif',
-        汗:'img/han.gif',
-        困:'img/kun.gif',
-        睡:'img/shui.gif',
-        钱:'img/qian.gif',
-        失望:'img/shiwang.gif',
-        酷:'img/ku.gif',
-        色:'img/se.gif',
-        哼:'img/heng.gif',
-        鼓掌:'img/guzhang.gif',
-        晕:'img/yun.gif',
-        悲伤:'img/beishang.gif',
-        抓狂:'img/zhuakuang.gif',
-        黑线:'img/heixian.gif',
-        阴险:'img/yinxian.gif',
-        怒骂:'img/numa.gif',
-        互粉:'img/hufen.gif',
-        书呆子:'img/shudaizi.gif',
-        愤怒:'img/fennu.gif',
-        感冒:'img/ganmao.gif',
-        心:'img/xin.gif',
-        伤心:'img/shangxin.gif',
-        猪:'img/zhu.gif',
-        熊猫:'img/xiongmao.gif',
-        兔子:'img/tuzi.gif',
-        OK:'img/ok.gif',
-        耶:'img/ye.gif',
-        GOOD:'img/good.gif',
-        NO:'img/no.gif',
-        赞:'img/zan.gif',
-        来:'img/lai.gif',
-        弱:'img/ruo.gif',
-        草泥马:'img/caonima.gif',
-        神马:'img/shenma.gif',
-        囧:'img/jiong.gif',
-        浮云:'img/fuyun.gif',
-        给力:'img/geili.gif',
-        围观:'img/weiguan.gif',
-        威武:'img/weiwu.gif',
-        话筒:'img/huatong.gif',
-        蜡烛:'img/lazhu.gif',
-        蛋糕:'img/dangao.gif',
-        发红包:'img/fahongbao.gif'}
-    if(list){
-        for(var i=0;i<list.length;i++){
-            title = list[i].replace(filter,'');
-            if(_hash[title]){
-                str = str.replace(list[i],' <img src="'+_hash[title]+'"/> ');
-            }
-        }                
-    }
-    return str;
-};
+
+ function format(str) {
+     var list = str.match(/\[[\u4e00-\u9fa5]*\w*\]/g);
+     var filter = /[\[\]]/g;
+     var title;
+     var _hash = {
+         微笑: 'img/weixiao.gif',
+         嘻嘻: 'img/xixi.gif',
+         哈哈: 'img/haha.gif',
+         可爱: 'img/keai.gif',
+         可怜: 'img/kelian.gif',
+         挖鼻: 'img/wabi.gif',
+         吃惊: 'img/chijing.gif',
+         害羞: 'img/haixiu.gif',
+         挤眼: 'img/jiyan.gif',
+         闭嘴: 'img/bizui.gif',
+         鄙视: 'img/bishi.gif',
+         爱你: 'img/aini.gif',
+         泪: 'img/lei.gif',
+         偷笑: 'img/touxiao.gif',
+         亲亲: 'img/qinqin.gif',
+         生病: 'img/shengbing.gif',
+         太开心: 'img/taikaixin.gif',
+         白眼: 'img/baiyan.gif',
+         右哼哼: 'img/youhengheng.gif',
+         左哼哼: 'img/zuohengheng.gif',
+         嘘: 'img/xu.gif',
+         衰: 'img/shuai.gif',
+         吐: 'img/tu.gif',
+         哈欠: 'img/haqian.gif',
+         抱抱: 'img/baobao.gif',
+         怒: 'img/nu.gif',
+         疑问: 'img/yiwen.gif',
+         馋嘴: 'img/chanzui.gif',
+         拜拜: 'img/baibai.gif',
+         思考: 'img/sikao.gif',
+         汗: 'img/han.gif',
+         困: 'img/kun.gif',
+         睡: 'img/shui.gif',
+         钱: 'img/qian.gif',
+         失望: 'img/shiwang.gif',
+         酷: 'img/ku.gif',
+         色: 'img/se.gif',
+         哼: 'img/heng.gif',
+         鼓掌: 'img/guzhang.gif',
+         晕: 'img/yun.gif',
+         悲伤: 'img/beishang.gif',
+         抓狂: 'img/zhuakuang.gif',
+         黑线: 'img/heixian.gif',
+         阴险: 'img/yinxian.gif',
+         怒骂: 'img/numa.gif',
+         互粉: 'img/hufen.gif',
+         书呆子: 'img/shudaizi.gif',
+         愤怒: 'img/fennu.gif',
+         感冒: 'img/ganmao.gif',
+         心: 'img/xin.gif',
+         伤心: 'img/shangxin.gif',
+         猪: 'img/zhu.gif',
+         熊猫: 'img/xiongmao.gif',
+         兔子: 'img/tuzi.gif',
+         OK: 'img/ok.gif',
+         耶: 'img/ye.gif',
+         GOOD: 'img/good.gif',
+         NO: 'img/no.gif',
+         赞: 'img/zan.gif',
+         来: 'img/lai.gif',
+         弱: 'img/ruo.gif',
+         草泥马: 'img/caonima.gif',
+         神马: 'img/shenma.gif',
+         囧: 'img/jiong.gif',
+         浮云: 'img/fuyun.gif',
+         给力: 'img/geili.gif',
+         围观: 'img/weiguan.gif',
+         威武: 'img/weiwu.gif',
+         话筒: 'img/huatong.gif',
+         蜡烛: 'img/lazhu.gif',
+         蛋糕: 'img/dangao.gif',
+         发红包: 'img/fahongbao.gif'
+     }
+     if (list) {
+         for (var i = 0; i < list.length; i++) {
+             title = list[i].replace(filter, '');
+             if (_hash[title]) {
+                 str = str.replace(list[i], ' <img src="' + _hash[title] + '"/> ');
+             }
+         }
+     }
+     return str;
+ };
  $(document).ready(function (e) {
-     var $message = $(".message_box");
      $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
      $('.uname').hover(
          function () {
@@ -288,78 +290,93 @@ function format(str){
      var fromname = $('#fromname').val();
      var to_uid = 0; // 默认为0,表示发送给所有用户
      var to_uname = '';
-     $('.user_list ').on("dblclick","li>em",function () {
+     $('.user_list ').on("dblclick", "li>em", function () {
 
-        var state = $(this).data("type");
-        $("#use-state").val(state);
+         var state = $(this).data("type");
 
-        var $li = $(this).parent();
+         var $li = $(this).parent();
+         if (!$li.hasClass("selected")) {
+             $li.addClass("selected");
+         }
+         var username = $li.data("username");
+
+         //隐藏表单数据
+         var $useForm = $("#use-state");
+         $useForm.attr("data-name", username);
+         $useForm.val(state);
+
+         //新增容器模板-不含msg里面的数据
+         var msg_temp = function (username) {
+             var _temp = '<div class="message_box now-chat" data-username="' + username + '"></div>';
+             return _temp;
+         };
 
 
-        $li.addClass("active");
-        var username = $li.data("username");
+         //点击是非‘所有用户’
+         if (username != "usersaid") {
+            var bool= false;
+          
+            $('.message_box').each(function (index, item) {
+                var data_box = $(item).data("username");
+                if (data_box != username) {
+                   bool = true;
+                }else {
+                    bool= false;
+                    return false;
+                }
+   
+            });
 
-        //新增容器模板-不含msg里面的数据
-        var msg_temp = function(username,content){
-            var _temp = '<div class="message_box now-chat" data-username="'+username+'"></div>';
-            return _temp;
-        };
-
-
-        //点击发送按钮的时候，与这里新增的模板管理
-
-
-        // if($message.hasClass("now-chat")){
-        //     $message.removeClass("now-chat");
-        //     $(".chat_left").prepend('<div class="message_box now-chat"></div>');
-            
-        // }
-
-       // mark_chat
-
+             //聊天容器不存在，则对应容器时添加
+             //如果存在，则需要切换对应消息盒显示
+            if(bool){
+                $('.message_box').removeClass("now-chat");
+               $(".chat_left").prepend(msg_temp(username));
+            }else{
+                $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
+            }
      
-        
-
-        
-
-
-        /*
-         to_uname = $(this).find('em').text();
-         to_uid = $(this).attr('data-id');
-         if (to_uname == fromname) {
-             alert('您不能和自己聊天!');
-             return false;
+         }else{
+            $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
          }
-         if (to_uname == '所有用户') {
-             $("#toname").val('');
-             $('#chat_type').text('群聊');
-             0
-         } else {
-             $("#toname").val(to_uid);
-             $('#chat_type').text('您正和 ' + to_uname + ' 聊天');
-         }
-         $(this).addClass('selected').siblings().removeClass('selected');
-         $('#message').focus().attr("placeholder", "您对" + to_uname + "说：");
-         */
+
+
+
+
+
+
      });
 
      //关闭按钮
-     $('.user_list ').on("click","i",function () {
-        alert()
+     $('.user_list ').on("click", "i", function () {
+         var $li = $(this).parent();
+         $li.removeClass("selected");
+         //还需要删除消息框
+         var username = $li.data("username");
+         $(".message_box").each(function (index, item) {
+             if ($(item).data("username") == username) {
+
+                 $(item).removeClass("now-chat").siblings().removeClass("now-chat");
+                 $("#message_box").addClass("now-chat");
+                 
+                 $(item).remove();
+             }
+         })
+
      });
 
      //发送消息
      $('.sub_but').click(function (event) {
          var $msg = $("#message");
          var msg = $msg.val();
-         if($.trim(msg) != ""){
+         if ($.trim(msg) != "") {
              sendMessage(event, fromname, to_uid, to_uname);
              $msg[0].focus();
-             $msg.attr("placeholder","说点啥吧...");
-         }else {
-            $msg.val("");
-            $msg[0].focus();
-            $msg.attr("placeholder","不能发送空白消息!");
+             $msg.attr("placeholder", "说点啥吧...");
+         } else {
+             $msg.val("");
+             $msg[0].focus();
+             $msg.attr("placeholder", "不能发送空白消息!");
          }
      });
 
@@ -368,29 +385,29 @@ function format(str){
          var e = window.event || event;
          var k = e.keyCode || e.which || e.charCode;
 
-        //按下enter发送消息,ctrl+enter换行
-        if ((!event.ctrlKey && (k == 13 || k == 10))) {
-            event.preventDefault();
-            var msg = $(this).val();
-            if($.trim(msg) != ""){
-                sendMessage(event, fromname, to_uid, to_uname);
-                $(this).attr("placeholder","说点啥吧...");
-            }else {
-                $(this).val("");
-                $(this).attr("placeholder","不能发送空白消息!");
-            }
-        } else if (k == 13 || k == 10) {
-            var _val = $(this).val();
-            $(this).val(_val + "\n");
-  
-        }
-       
+         //按下enter发送消息,ctrl+enter换行
+         if ((!event.ctrlKey && (k == 13 || k == 10))) {
+             event.preventDefault();
+             var msg = $(this).val();
+             if ($.trim(msg) != "") {
+                 sendMessage(event, fromname, to_uid, to_uname);
+                 $(this).attr("placeholder", "说点啥吧...");
+             } else {
+                 $(this).val("");
+                 $(this).attr("placeholder", "不能发送空白消息!");
+             }
+         } else if (k == 13 || k == 10) {
+             var _val = $(this).val();
+             $(this).val(_val + "\n");
+
+         }
+
      });
  });
 
  function sendMessage(event, from_name, to_uid, to_uname) {
      var msg = $("#message").val();
-         msg = $.trim(msg);
+     msg = $.trim(msg);
      if (to_uname != '') {
          msg = '您对 ' + to_uname + ' 说： ' + msg;
      }

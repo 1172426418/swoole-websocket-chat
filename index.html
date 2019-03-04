@@ -31,30 +31,8 @@
     <div class="chat_message fn-clear">
       <div class="chat_left">
           <!-- now-chat 现在正在聊天的标记 -->
-        <div class="message_box now-chat" id="message_box">
-          <!--         <div class="msg_item fn-clear">
-          <div class="uface"><img src="images/53f44283a4347.jpg" width="40" height="40"  alt=""/></div>
-          <div class="item_right">
-            <div class="msg">近日，TIOBE发布了2014年9月的编程语言排行榜，Java、C++跌至历史最低点，前三名则没有变化，依旧是C、Java、Objective-C。</div>
-            <div class="name_time">猫猫 · 3分钟前</div>
-          </div>
-        </div>
-        
-        <div class="msg_item fn-clear">
-          <div class="uface"><img src="images/53f442834079a.jpg" width="40" height="40"  alt=""/></div>
-          <div class="item_right">
-            <div class="msg">(Visual) FoxPro, 4th Dimension/4D, Alice, APL, Arc, Automator, Awk, Bash, bc, Bourne shell, C++CLI, CFML, cg, CL (OS/400), Clean, Clojure, Emacs Lisp, Factor, Forth, Hack, Icon, Inform, Io, Ioke, J, JScript.NET, LabVIEW, LiveCode, M4, Magic, Max/MSP, Modula-2, Moto, NATURAL, OCaml, OpenCL, Oz, PILOT, Programming Without Coding Technology, Prolog, Pure Data, Q, RPG (OS/400), S, Smalltalk, SPARK, Standard ML, TOM, VBScript, Z shell</div>
-            <div class="name_time">白猫 · 1分钟前</div>
-          </div>
-        </div>
-        
-        <div class="msg_item fn-clear">
-          <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>
-          <div class="item_right">
-            <div class="msg own">那个统计表也不能说明一切</div>
-            <div class="name_time">河图 · 30秒前</div>
-          </div>
-        </div> -->
+        <div class="message_box now-chat" id="message_box" data-username="usersaid">
+
         </div>
         <div class="write_box ">
           <div class="publisher">
@@ -72,10 +50,7 @@
       </div>
       <div class="chat_right">
         <ul class="user_list" >
-          <li class="fn-clear selected"  ><em data-type="usersaid" title="双击切换群聊">所有用户</em></li>
-          <!--         <li class="fn-clear" data-id="1"><span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span><em>河图</em><small class="online" title="在线"></small></li>
-        <li class="fn-clear" data-id="2"><span><img src="images/53f44283a4347.jpg" width="30" height="30"  alt=""/></span><em>猫猫</em><small class="online" title="在线"></small></li>
-        <li class="fn-clear" data-id="3"><span><img src="images/53f442834079a.jpg" width="30" height="30"  alt=""/></span><em>白猫</em><small class="offline" title="离线"></small></li> -->
+          <li class="fn-clear selected" data-username="usersaid" ><em data-type="usersaid"  title="双击切换群聊">所有用户</em></li>
 
         </ul>
       </div>
@@ -83,9 +58,8 @@
   </div>
 
 
-  <input id="use-state" type="hidden" value="usersaid">
+  <input id="use-state" type="hidden" value="usersaid" data-name="usersaid">
 
-  <!-- <i class="iconfont icon-guanbi"></i> -->
 
  
   <script src="js/jquery.min.js"></script>
