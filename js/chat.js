@@ -341,7 +341,7 @@
 
             $log.html("您正在和"+$(this).text()+"聊天");
          }else{
-            $log.html("您正进入群聊");
+            $log.html("您已进入群聊");
             $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
          }
 
