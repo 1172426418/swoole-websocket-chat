@@ -357,11 +357,14 @@
      $('.user_list ').on("click", "i", function () {
          var $li = $(this).parent();
          $li.removeClass("selected");
+         $li.children("em").removeClass("active").end().siblings().children("em").removeClass("active");
+         $li.parent().children("li:first").children("em").addClass("active");
+         $(".logo span").html("您已进入群聊");
          //还需要删除消息框
          var username = $li.data("username");
          $(".message_box").each(function (index, item) {
              if ($(item).data("username") == username) {
-
+              
                  $(item).removeClass("now-chat").siblings().removeClass("now-chat");
                  $("#message_box").addClass("now-chat");
                  
