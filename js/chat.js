@@ -112,8 +112,8 @@
  }
  //timestampToTime(1403058804);
 
-
-
+ //聊天框标示
+ var mark_chat = null;
  websocket.onmessage = function (evt) {
 
 
@@ -271,6 +271,7 @@ function format(str){
     return str;
 };
  $(document).ready(function (e) {
+     var $message = $(".message_box");
      $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
      $('.uname').hover(
          function () {
@@ -288,6 +289,35 @@ function format(str){
 
         var state = $(this).data("type");
         $("#use-state").val(state);
+
+        var $li = $(this).parent();
+
+
+        $li.addClass("active");
+        var username = $li.data("username");
+
+        //新增容器模板-不含msg里面的数据
+        var msg_temp = function(username,content){
+            var _temp = '<div class="message_box now-chat" data-username="'+username+'"></div>';
+            return _temp;
+        };
+
+
+        //点击发送按钮的时候，与这里新增的模板管理
+
+
+        // if($message.hasClass("now-chat")){
+        //     $message.removeClass("now-chat");
+        //     $(".chat_left").prepend('<div class="message_box now-chat"></div>');
+            
+        // }
+
+       // mark_chat
+
+     
+        
+
+        
 
 
         /*
@@ -315,6 +345,7 @@ function format(str){
         alert()
      });
 
+     //发送消息
      $('.sub_but').click(function (event) {
          var $msg = $("#message");
          var msg = $msg.val();
