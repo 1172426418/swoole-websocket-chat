@@ -230,11 +230,21 @@ i.logout:before {
 
 .logo {
     float: left;
+
+    img {
+        vertical-align: bottom;
+        width: 190;
+        height: 60;
+    }
+
+    span {
+        line-height: 60px;
+        color: #333;
+        
+    }
 }
 
-.logo img {
-    vertical-align: bottom;
-}
+
 
 .uinfo {
     margin: 10px 0;
@@ -278,7 +288,7 @@ i.logout:before {
     position: absolute;
     top: 40px;
     right: -10px;
-    z-index:10;
+    z-index: 10;
 
     a {
         display: block;
@@ -324,9 +334,10 @@ i.logout:before {
     border-bottom: 1px solid #eee;
     overflow: auto;
 
-    display:none;
+    display: none;
 }
-.now-chat{
+
+.now-chat {
     display: block;
 }
 
@@ -522,240 +533,268 @@ i.logout:before {
         vertical-align: middle;
     }
 
-    .selected{
-        em{
+    //选中
+    .selected {
+        em {
             color: #9f9fdb;
         }
+
         &:hover {
-            &>i{
+            &>i {
                 display: block;
             }
         }
     }
-}
-
-small {
-    .online {
-        background-color: #57B869;
-    }
-
-    .offline {
-        background-color: #EB3E3E;
-    }
-
-}
-
-
-
-/*expression - 表情,有待增加*/
-.expression {
-    float: left;
-}
-
-/*chat_type - 聊天性质,私聊|群聊*/
-.chat_type {
-    float: left;
-    line-height: 30px;
-    padding-left: 10px;
-}
-
-//表情按钮
-.pub-btn {
-    line-height: 25px;
-}
-
-.trigger {
-    font-size: 24px;
-    font-weight: bold;
-    color: #666;
-}
-
-.trigger-active {
-    color: #eb7350;
-}
-
-
-.result {
-    padding: 10px 15px;
-    border: 1px dotted #dbdbdb;
-    margin-top: 10px;
-    height: 150px;
-    line-height: 24px;
-
-    img {
-        vertical-align: middle;
-    }
-}
-
-//表情弹框
-.widget-layer {
-    position: relative;
-    width: 410px;
-    margin-top: 8px;
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    border-radius: 2px;
-
-    &:before {
-        position: absolute;
-        bottom: -16px;
-        // top: -16px;
-        left: 2px;
-        display: block;
-        content: '';
-        width: 0;
-        height: 0;
-        border: 8px solid transparent;
-        // border-bottom-color: #dbdbdb;
-        border-top-color: #dbdbdb;
-    }
-
-    &:after {
-        position: absolute;
-        // top: -15px;
-        bottom: -15px;
-        left: 2px;
-        display: block;
-        content: '';
-        width: 0;
-        height: 0;
-        border: 8px solid transparent;
-        // border-bottom-color: #f0f0f0;
-        border-top-color: #f0f0f0;
-    }
-
-    .widget-tool {
-        height: 28px;
-        background: #f0f0f0;
-    }
-
-    .widget-close {
-        float: right;
-        width: 28px;
-        height: 28px;
-        line-height: 28px;
-        text-align: center;
-        font-family: Arial;
-    }
-
-    ul {
-        width: 372px;
-        margin: 0 auto;
-        padding: 15px 5px 20px;
-        overflow: hidden;
-    }
-
-    li {
+  
+    //激活
+    .active {
         position: relative;
-        z-index: 8;
-        float: left;
-        width: 22px;
-        height: 22px;
-        margin: 4px;
-        border: 1px solid #e8e8e8;
-        cursor: pointer;
+        &:after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            right: -20px;
+            top: 10px;
+            background-color: rgb(87,184,105);
+        }
 
-        &:hover {
-            border-color: #eb7350;
+
+    }
+
+  
+
+}
+
+
+
+    small {
+        .online {
+            background-color: #57B869;
+        }
+
+        .offline {
+            background-color: #EB3E3E;
+        }
+
+    }
+
+
+
+    /*expression - 表情,有待增加*/
+    .expression {
+        float: left;
+    }
+
+    /*chat_type - 聊天性质,私聊|群聊*/
+    .chat_type {
+        float: left;
+        line-height: 30px;
+        padding-left: 10px;
+    }
+
+    //表情按钮
+    .pub-btn {
+        line-height: 25px;
+    }
+
+    .trigger {
+        font-size: 24px;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .trigger-active {
+        color: #eb7350;
+    }
+
+
+    .result {
+        padding: 10px 15px;
+        border: 1px dotted #dbdbdb;
+        margin-top: 10px;
+        height: 150px;
+        line-height: 24px;
+
+        img {
+            vertical-align: middle;
         }
     }
-}
 
+    //表情弹框
+    .widget-layer {
+        position: relative;
+        width: 410px;
+        margin-top: 8px;
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
 
-/* 外加样式 */
+        &:before {
+            position: absolute;
+            bottom: -16px;
+            // top: -16px;
+            left: 2px;
+            display: block;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            // border-bottom-color: #dbdbdb;
+            border-top-color: #dbdbdb;
+        }
 
-.use-dialog {
-    background-color: rgba(0, 0, 0, .1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index:999;
-    & * {
-        box-sizing: border-box;
+        &:after {
+            position: absolute;
+            // top: -15px;
+            bottom: -15px;
+            left: 2px;
+            display: block;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            // border-bottom-color: #f0f0f0;
+            border-top-color: #f0f0f0;
+        }
+
+        .widget-tool {
+            height: 28px;
+            background: #f0f0f0;
+        }
+
+        .widget-close {
+            float: right;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-family: Arial;
+        }
+
+        ul {
+            width: 372px;
+            margin: 0 auto;
+            padding: 15px 5px 20px;
+            overflow: hidden;
+        }
+
+        li {
+            position: relative;
+            z-index: 8;
+            float: left;
+            width: 22px;
+            height: 22px;
+            margin: 4px;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+
+            &:hover {
+                border-color: #eb7350;
+            }
+        }
     }
-}
 
-.dialog-content {
 
-    transition: transform .3s ease-out;
-    background-color: #fff;
-    width: 300px;
-    margin: 30px auto;
-    padding: 15px;
-    padding-bottom: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    /* 外加样式 */
 
-    .title {
-        padding-bottom: 15px;
-        font-weight: bold;
-        text-align: center;
+    .use-dialog {
+        background-color: rgba(0, 0, 0, .1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999;
+
+        & * {
+            box-sizing: border-box;
+        }
     }
 
-    input {
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        padding: 5px;
-        width: 100%;
+    .dialog-content {
+
+        transition: transform .3s ease-out;
+        background-color: #fff;
+        width: 300px;
+        margin: 30px auto;
+        padding: 15px;
+        padding-bottom: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+
+        .title {
+            padding-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .btn {
+            background-color: #2F97E1;
+            color: #fff;
+            padding: 5px 8px;
+            width: 60px;
+            text-align: center;
+            margin: 10px auto;
+            cursor: pointer;
+            border-radius: 3px;
+        }
     }
 
-    .btn {
-        background-color: #2F97E1;
-        color: #fff;
-        padding: 5px 8px;
-        width: 60px;
-        text-align: center;
-        margin: 10px auto;
-        cursor: pointer;
-        border-radius: 3px;
+    .animate-hide {
+        -ms-transform: translate(0, -25%);
+        -webkit-transform: translate(0, -25%);
+        transform: translate(0, -25%);
     }
-}
 
-.animate-hide {
-    -ms-transform: translate(0, -25%);
-    -webkit-transform: translate(0, -25%);
-    transform: translate(0, -25%);
-}
-
-.animate-show {
-    -ms-transform: translate(0, 25%);
-    -webkit-transform: translate(0, 25%);
-    transform: translate(0, 25%);
-}
-
-
-//关闭按钮字体引用
-@font-face {
-    font-family: "iconfont";
-    // src: url('iconfont.eot?t=1551430762070'); /* IE9 */
-
-    src: url('../font/f2/iconfont.ttf?t=1551430762070') format('truetype');
-    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-    // url('iconfont.eot?t=1551430762070#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    // url('iconfont.woff?t=1551430762070') format('woff'),
-    // url('iconfont.svg?t=1551430762070#iconfont') format('svg'); /* iOS 4.1- */
-}
-
-.iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: inline-block;
-}
-
-.icon-guanbi{
-    position: absolute;
-    right: 15px;
-    top:10px;
-
-    display: none;
-    &:before {
-        content: "\e7b7";
+    .animate-show {
+        -ms-transform: translate(0, 25%);
+        -webkit-transform: translate(0, 25%);
+        transform: translate(0, 25%);
     }
-    &:hover{
-        color:#ff0000;
+
+
+    //关闭按钮字体引用
+    @font-face {
+        font-family: "iconfont";
+        // src: url('iconfont.eot?t=1551430762070'); /* IE9 */
+
+        src: url('../font/f2/iconfont.ttf?t=1551430762070') format('truetype');
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+        // url('iconfont.eot?t=1551430762070#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        // url('iconfont.woff?t=1551430762070') format('woff'),
+        // url('iconfont.svg?t=1551430762070#iconfont') format('svg'); /* iOS 4.1- */
     }
-}
+
+    .iconfont {
+        font-family: "iconfont" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: inline-block;
+    }
+
+    .icon-guanbi {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+
+        display: none;
+
+        &:before {
+            content: "\e7b7";
+        }
+
+        &:hover {
+            color: #ff0000;
+        }
+    }

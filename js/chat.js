@@ -312,6 +312,8 @@
          };
 
 
+
+         var $log = $(".logo span");
          //点击是非‘所有用户’
          if (username != "usersaid") {
             var bool= false;
@@ -335,14 +337,18 @@
             }else{
                 $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
             }
-     
+            
+
+            $log.html("您正在和"+$(this).text()+"聊天");
          }else{
+            $log.html("您正进入群聊");
             $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
          }
 
+         $(this).addClass("active").parent().siblings().children("em").removeClass("active");
 
-
-
+    
+        
 
 
      });
