@@ -214,25 +214,25 @@ var g_username;
             if(data.from_fd==g_userfd){//判断发送人是当前用户
                 if(!$(".fn-clear[data-username="+data.userid+"]").hasClass("selected")){
                     
-                    $(".fn-clear[data-username="+data.userid+"]").addClass("selected");
+                    $(".fn-clear[data-username="+data.userid+"]").addClass("selected");//添加列表用户选中
                 }
                 if($(".message_box[data-username="+data.userid+"]").length<=0){
                     
-                    $(".chat_left").prepend('<div class="message_box" data-username="' + data.userid + '"></div>');
+                    $(".chat_left").prepend('<div class="message_box" data-username="' + data.userid + '"></div>');//添加消息容器
                 }
                 
-                $(".message_box[data-username='"+data.userid+"']").append(s);           
+                $(".message_box[data-username='"+data.userid+"']").append(s);           //将内容加入消息容器
             }else{
                 if(!$(".fn-clear[data-username="+data.from_fd+"]").hasClass("selected")){
                     
                     $(".fn-clear[data-username="+data.from_fd+"]").addClass("selected");
                 }
-                //console.log($(".message_box[data-username="+data.from_fd+"]").length);
+               
                 if($(".message_box[data-username="+data.from_fd+"]").length<=0){
                     
                    $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
                 }
-                // $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
+                
                 $(".message_box[data-username='"+data.from_fd+"']").append(s);
             }
 

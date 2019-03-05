@@ -8,38 +8,8 @@ class Websocket {
         $this->fid_arr->column('id', swoole_table::TYPE_INT, 4);       //1,2,4,8
         $this->fid_arr->column('name', swoole_table::TYPE_STRING, 64);
         $this->fid_arr->create();
-       // $this->fid_arr->column('key', swoole_table::TYPE_INT, 4);       //1,2,4,
-
-        //var_dump();
-       // $this->atomic =new swoole_atomic(0);
-        //$ws->set(array(
-        //    'daemonize' => true,
-        //));
         //监听WebSocket连接打开事件
         $this->server->on('open', function (swoole_websocket_server $server, $request){
-            //var_dump($request->fd, $request->get, $request->server);
-
-//                if (!$this->fid_arr->exist($request->fd)) {
-//                    $this->fid_arr->set($request->fd, ['id' => $request->fd, 'name' => "user" . $request->fd]);
-//
-//                }
-//                $alluser = '';
-//                foreach ($this->fid_arr as $v) {
-//                    $alluser .= $v['name'] . ',';
-//                }
-//                $alluser = substr($alluser, 0, -1);
-//                $data = array(
-//                    'type' => 1,//消息类型 1系统
-//                    'content' => '欢迎user' . $request->fd . '进入聊天室',
-//                    'user' => "user" . $request->fd,
-//                    'alluser' => $alluser
-
-//                );
-//                foreach ($this->fid_arr as $k => $v) {
-//                    $server->push($k, json_encode($data));
-//                }
-
-            //$server->push($request->fd, json_encode($data));
         });
 
 
@@ -117,8 +87,7 @@ class Websocket {
                 'type'=>3,//消息类型 1系统 2用户消息 3用户断开连接
                 'user'=>$fd,
             );
-            //$this->atomic->sub(1);
-           // var_dump($this->fid_arr);
+
             foreach ($this->fid_arr as $k=>$v){
                 $server->push($k, json_encode($data));
             }
