@@ -223,7 +223,7 @@
                  if (!$sidUse.hasClass("selected")) {
                      $sidUse.addClass("selected");
                  }
-                 $(".logo span").html("<i style='color:red'>" + $sidUse.children("em").text() + "正在给您发消息</i>");
+                 $(".logo span").html("<i style='color:red'>来自" + $sidUse.children("em").text() + "的消息</i>");
 
                  var $acceptBox = $(".message_box[data-username='" + data.from_fd + "']");
                  if ($acceptBox.length <= 0) {
