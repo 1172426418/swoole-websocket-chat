@@ -151,15 +151,36 @@
              // console.log(data.alluser);
              // var csss=JSON.parse(data.alluser);
 
+                var nowLi=[];
+            //  $(".user_list li").each(function (index, item) {
+
+            //     nowLi.push($(item).data("username"));
+
+            //  })
+
+            //  console.log(nowLi)
+            // console.log(data.alluser)
+
+            var obj = JSON.parse(data.alluser) ;
              $.each(JSON.parse(data.alluser), function (key, val) {
-                 str += '<li class="fn-clear" data-id="1" data-username="' + key + '">' +
-                     '<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>' +
-                     '<em title="双击用户名私聊" data-type="usertouser">' + val + '</em>' +
-                     '<small class="online" title="在线"></small>' +
-                     '<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>' +
-                     '</li>';
+                $(".user_list li").each(function (index, item) {
+                    if(key == $(item).data("username")){
+                        delete obj[key]
+                    }
+                 })
              })
-             $("li[data-id='1']").remove();
+
+             $.each(obj,function(key,val){
+                str += '<li class="fn-clear" data-id="1" data-username="' + key + '">' +
+                '<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>' +
+                '<em title="双击用户名私聊" data-type="usertouser">' + val + '</em>' +
+                '<small class="online" title="在线"></small>' +
+                '<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>' +
+                '</li>';
+             })
+
+            //  $("li[data-id='1']").remove();
+
              $(".user_list").append(str);
              $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
              break;
@@ -316,39 +337,39 @@
          var $log = $(".logo span");
          //点击是非‘所有用户’
          if (username != "usersaid") {
-            var bool= false;
-          
-            $('.message_box').each(function (index, item) {
-                var data_box = $(item).data("username");
-                if (data_box != username) {
-                   bool = true;
-                }else {
-                    bool= false;
-                    return false;
-                }
-   
-            });
+             var bool = false;
+
+             $('.message_box').each(function (index, item) {
+                 var data_box = $(item).data("username");
+                 if (data_box != username) {
+                     bool = true;
+                 } else {
+                     bool = false;
+                     return false;
+                 }
+
+             });
 
              //聊天容器不存在，则对应容器时添加
              //如果存在，则需要切换对应消息盒显示
-            if(bool){
-                $('.message_box').removeClass("now-chat");
-               $(".chat_left").prepend(msg_temp(username));
-            }else{
-                $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
-            }
-            
+             if (bool) {
+                 $('.message_box').removeClass("now-chat");
+                 $(".chat_left").prepend(msg_temp(username));
+             } else {
+                 $('.message_box[data-username="' + username + '"]').addClass("now-chat").siblings().removeClass("now-chat");
+             }
 
-            $log.html("您正在和"+$(this).text()+"聊天");
-         }else{
-            $log.html("您已进入群聊");
-            $('.message_box[data-username="'+username+'"]').addClass("now-chat").siblings().removeClass("now-chat");
+
+             $log.html("您正在和" + $(this).text() + "聊天");
+         } else {
+             $log.html("您已进入群聊");
+             $('.message_box[data-username="' + username + '"]').addClass("now-chat").siblings().removeClass("now-chat");
          }
 
          $(this).addClass("active").parent().siblings().children("em").removeClass("active");
 
-    
-        
+
+
 
 
      });
@@ -364,10 +385,10 @@
          var username = $li.data("username");
          $(".message_box").each(function (index, item) {
              if ($(item).data("username") == username) {
-              
+
                  $(item).removeClass("now-chat").siblings().removeClass("now-chat");
                  $("#message_box").addClass("now-chat");
-                 
+
                  $(item).remove();
              }
          })
