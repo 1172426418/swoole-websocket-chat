@@ -35,7 +35,8 @@
  websocket.onclose = function (evt) {
      alert("Disconnected");
  };
-
+var g_userfd;
+var g_username;
  //用户输入
  var dialog_template = function () {
      return '  <div class="use-dialog "><div class="dialog-content ">' +
@@ -191,7 +192,7 @@
                  '<div class="name_time">' + data.user + times + '</div>' +
                  '<div class="msg">' + data.content + '</div>' +
                  '</div></div>';
-             $(".message_box").append(s);
+             $(".message_box[data-username=usersaid]").append(s);
              $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
              break;
          case 3: //用户离开房间
@@ -199,8 +200,42 @@
              break;
          case 4:
              $(".username").html(data.username); //此时还包括用户独立的userid 可放入全局变量中用于判断和是否是和自己聊天
+             g_userfd=data.userid;
+             g_username=data.username;
              //console.log(data);
              break;
+        case 5:
+            data.content = format(data.content);
+            var s =
+                 '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right">' +
+                 '<div class="name_time">' + data.from_user + times + '</div>' +
+                 '<div class="msg">' + data.content + '</div>' +
+                 '</div></div>';
+            if(data.from_fd==g_userfd){//判断发送人是当前用户
+                if(!$(".fn-clear[data-username="+data.userid+"]").hasClass("selected")){
+                    
+                    $(".fn-clear[data-username="+data.userid+"]").addClass("selected");
+                }
+                if($(".message_box[data-username="+data.userid+"]").length<=0){
+                    
+                    $(".chat_left").prepend('<div class="message_box" data-username="' + data.userid + '"></div>');
+                }
+                
+                $(".message_box[data-username='"+data.userid+"']").append(s);           
+            }else{
+                if(!$(".fn-clear[data-username="+data.from_fd+"]").hasClass("selected")){
+                    
+                    $(".fn-clear[data-username="+data.from_fd+"]").addClass("selected");
+                }
+                //console.log($(".message_box[data-username="+data.from_fd+"]").length);
+                if($(".message_box[data-username="+data.from_fd+"]").length<=0){
+                    
+                   $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
+                }
+                // $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
+                $(".message_box[data-username='"+data.from_fd+"']").append(s);
+            }
+
 
      }
  };
@@ -438,20 +473,35 @@
  function sendMessage(event, from_name, to_uid, to_uname) {
      var msg = $("#message").val();
      msg = $.trim(msg);
-     if (to_uname != '') {
-         msg = '您对 ' + to_uname + ' 说： ' + msg;
-     }
-     var htmlData = '<div class="msg_item fn-clear">' +
-         '   <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>' +
-         '   <div class="item_right">' +
-         '     <div class="msg own">' + msg + '</div>' +
-         '     <div class="name_time">' + from_name + ' · 30秒前</div>' +
-         '   </div>' +
-         '</div>';
+     var type=$("#use-state").val();
+     var userid=$("#use-state").attr('data-name');
+     var from_fd=g_userfd;
+     var from_user=g_username;
+     console.log(userid);
+     // if (to_uname != '') {
+     //     msg = '您对 ' + to_uname + ' 说： ' + msg;
+     // }
+     // var htmlData = '<div class="msg_item fn-clear">' +
+     //     '   <div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div>' +
+     //     '   <div class="item_right">' +
+     //     '     <div class="msg own">' + msg + '</div>' +
+     //     '     <div class="name_time">' + from_name + ' · 30秒前</div>' +
+     //     '   </div>' +
+     //     '</div>';
      //$("#message_box").append(htmlData);
      websocket.send(JSON.stringify({
          'message': msg,
-         'type': 'usersaid'
+         'type': type,
+         'from_fd':from_fd,
+         'from_user':g_username,
+         'userid':userid
+     }));
+     console.log(JSON.stringify({
+         'message': msg,
+         'type': type,
+         'from_fd':from_fd,
+         'from_user':g_username,
+         'userid':userid
      }));
      $('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
      $("#message").val('');
