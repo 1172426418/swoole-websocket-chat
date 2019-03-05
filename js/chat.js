@@ -145,21 +145,8 @@
                  '</div></div>';
              $(".message_box").append(s);
 
-
              //  var arr = data.alluser.split(',');
              var str = '';
-             // console.log(data.alluser);
-             // var csss=JSON.parse(data.alluser);
-
-                var nowLi=[];
-            //  $(".user_list li").each(function (index, item) {
-
-            //     nowLi.push($(item).data("username"));
-
-            //  })
-
-            //  console.log(nowLi)
-            // console.log(data.alluser)
 
             var obj = JSON.parse(data.alluser) ;
              $.each(JSON.parse(data.alluser), function (key, val) {
