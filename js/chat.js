@@ -35,8 +35,8 @@
  websocket.onclose = function (evt) {
      alert("Disconnected");
  };
-var g_userfd;
-var g_username;
+ var g_userfd;
+ var g_username;
  //用户输入
  var dialog_template = function () {
      return '  <div class="use-dialog "><div class="dialog-content ">' +
@@ -144,30 +144,30 @@ var g_username;
                  '<div class="msg_item fn-clear"><div class="uface"></div><div class="item_sys">' +
                  '<div  class="msgs"><span >' + data.content + '</span></div>' +
                  '</div></div>';
-             $(".message_box").append(s);
+             $("#message_box").append(s);
 
              //  var arr = data.alluser.split(',');
              var str = '';
 
-            var obj = JSON.parse(data.alluser) ;
+             var obj = JSON.parse(data.alluser);
              $.each(JSON.parse(data.alluser), function (key, val) {
-                $(".user_list li").each(function (index, item) {
-                    if(key == $(item).data("username")){
-                        delete obj[key]
-                    }
+                 $(".user_list li").each(function (index, item) {
+                     if (key == $(item).data("username")) {
+                         delete obj[key]
+                     }
                  })
              })
 
-             $.each(obj,function(key,val){
-                str += '<li class="fn-clear" data-id="1" data-username="' + key + '">' +
-                '<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>' +
-                '<em title="双击用户名私聊" data-type="usertouser">' + val + '</em>' +
-                '<small class="online" title="在线"></small>' +
-                '<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>' +
-                '</li>';
+             $.each(obj, function (key, val) {
+                 str += '<li class="fn-clear" data-id="1" data-username="' + key + '">' +
+                     '<span><img src="images/hetu.jpg" width="30" height="30"  alt=""/></span>' +
+                     '<em title="双击用户名私聊" data-type="usertouser">' + val + '</em>' +
+                     '<small class="online" title="在线"></small>' +
+                     '<i class="iconfont icon-guanbi" title="点击关闭私聊"></i>' +
+                     '</li>';
              })
 
-            //  $("li[data-id='1']").remove();
+             //  $("li[data-id='1']").remove();
 
              $(".user_list").append(str);
              $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
@@ -179,49 +179,62 @@ var g_username;
                  '<div class="name_time">' + data.user + times + '</div>' +
                  '<div class="msg">' + data.content + '</div>' +
                  '</div></div>';
-             $(".message_box[data-username=usersaid]").append(s);
+             $('#message_box').append(s);
              $('#message_box').scrollTop($("#message_box")[0].scrollHeight);
+
+
              break;
          case 3: //用户离开房间
              $("li[data-username='" + data.user + "']").remove();
              break;
          case 4:
              $(".username").html(data.username); //此时还包括用户独立的userid 可放入全局变量中用于判断和是否是和自己聊天
-             g_userfd=data.userid;
-             g_username=data.username;
+             g_userfd = data.userid;
+             g_username = data.username;
              //console.log(data);
              break;
-        case 5:
-            data.content = format(data.content);
-            var s =
+         case 5:
+             data.content = format(data.content);
+             var s =
                  '<div class="msg_item fn-clear"><div class="uface"><img src="images/hetu.jpg" width="40" height="40"  alt=""/></div><div class="item_right">' +
                  '<div class="name_time">' + data.from_user + times + '</div>' +
                  '<div class="msg">' + data.content + '</div>' +
                  '</div></div>';
-            if(data.from_fd==g_userfd){//判断发送人是当前用户
-                if(!$(".fn-clear[data-username="+data.userid+"]").hasClass("selected")){
-                    
-                    $(".fn-clear[data-username="+data.userid+"]").addClass("selected");
-                }
-                if($(".message_box[data-username="+data.userid+"]").length<=0){
-                    
-                    $(".chat_left").prepend('<div class="message_box" data-username="' + data.userid + '"></div>');
-                }
-                
-                $(".message_box[data-username='"+data.userid+"']").append(s);           
-            }else{
-                if(!$(".fn-clear[data-username="+data.from_fd+"]").hasClass("selected")){
-                    
-                    $(".fn-clear[data-username="+data.from_fd+"]").addClass("selected");
-                }
-                //console.log($(".message_box[data-username="+data.from_fd+"]").length);
-                if($(".message_box[data-username="+data.from_fd+"]").length<=0){
-                    
-                   $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
-                }
-                // $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
-                $(".message_box[data-username='"+data.from_fd+"']").append(s);
-            }
+             if (data.from_fd == g_userfd) { //判断发送人是当前用户
+                 if (!$(".fn-clear[data-username=" + data.userid + "]").hasClass("selected")) {
+
+                     $(".fn-clear[data-username=" + data.userid + "]").addClass("selected");
+                 }
+                 if ($(".message_box[data-username=" + data.userid + "]").length <= 0) {
+
+                     $(".chat_left").prepend('<div class="message_box" data-username="' + data.userid + '"></div>');
+                 }
+
+                 var $sendBox = $(".message_box[data-username='" + data.userid + "']");
+                 $sendBox.append(s);
+
+                 $sendBox.scrollTop($sendBox[0].scrollHeight);
+             } else {
+
+                 var $sidUse = $(".fn-clear[data-username=" + data.from_fd + "]");
+
+                 $sidUse.addClass("new-msg").siblings().removeClass("new-msg");
+
+                 if (!$sidUse.hasClass("selected")) {
+                     $sidUse.addClass("selected");
+                 }
+                 $(".logo span").html("<i style='color:red'>" + $sidUse.children("em").text() + "正在给您发消息</i>");
+
+                 var $acceptBox = $(".message_box[data-username='" + data.from_fd + "']");
+                 if ($acceptBox.length <= 0) {
+                     $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
+                 }
+                 // $(".chat_left").prepend('<div class="message_box" data-username="' + data.from_fd + '"></div>');
+
+                 $acceptBox.append(s);
+                 $acceptBox.scrollTop($acceptBox[0].scrollHeight);
+
+             }
 
 
      }
@@ -335,12 +348,19 @@ var g_username;
      var to_uname = '';
      $('.user_list ').on("dblclick", "li>em", function () {
 
+
+
          var state = $(this).data("type");
 
          var $li = $(this).parent();
          if (!$li.hasClass("selected")) {
              $li.addClass("selected");
          }
+
+         if ($li.hasClass("new-msg")) {
+             $li.removeClass("new-msg");
+         }
+
          var username = $li.data("username");
 
          //隐藏表单数据
@@ -380,6 +400,9 @@ var g_username;
              } else {
                  $('.message_box[data-username="' + username + '"]').addClass("now-chat").siblings().removeClass("now-chat");
              }
+
+             var $msgBox = $(".message_box[data-username='" + username + "']");
+             $msgBox.scrollTop($msgBox[0].scrollHeight);
 
 
              $log.html("您正在和" + $(this).text() + "聊天");
@@ -460,10 +483,10 @@ var g_username;
  function sendMessage(event, from_name, to_uid, to_uname) {
      var msg = $("#message").val();
      msg = $.trim(msg);
-     var type=$("#use-state").val();
-     var userid=$("#use-state").attr('data-name');
-     var from_fd=g_userfd;
-     var from_user=g_username;
+     var type = $("#use-state").val();
+     var userid = $("#use-state").attr('data-name');
+     var from_fd = g_userfd;
+     var from_user = g_username;
      console.log(userid);
      // if (to_uname != '') {
      //     msg = '您对 ' + to_uname + ' 说： ' + msg;
@@ -479,16 +502,16 @@ var g_username;
      websocket.send(JSON.stringify({
          'message': msg,
          'type': type,
-         'from_fd':from_fd,
-         'from_user':g_username,
-         'userid':userid
+         'from_fd': from_fd,
+         'from_user': g_username,
+         'userid': userid
      }));
      console.log(JSON.stringify({
          'message': msg,
          'type': type,
-         'from_fd':from_fd,
-         'from_user':g_username,
-         'userid':userid
+         'from_fd': from_fd,
+         'from_user': g_username,
+         'userid': userid
      }));
      $('#message_box').scrollTop($("#message_box")[0].scrollHeight + 20);
      $("#message").val('');
